@@ -1,0 +1,7 @@
+.hover-fade {
+    transition: filter 0.3s ease;
+}
+
+.hover-fade:hover {
+    filter: brightness(80%);
+}
