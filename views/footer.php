@@ -15,16 +15,16 @@
         <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <footer class="lg:max-w-screen-xl md:max-w-screen-md sm:max-w-screen-sm mx-auto">
-            <div class="bg-violet-900 bg-opacity-55 pt-16 pb-6 lg:max-w-screen-xl mx-auto lg:px-16 sm:px-4 md:px-10">
-            <div class="flex lg:flex-nowrap md:flex-wrap sm:flex-wrap">
-                <div class="lg:basis-2/12 md:basis-1/4 sm:basis-full sm:pb-10">
+        <footer class="mx-auto">
+          <div class="bg-violet-900 bg-opacity-55 pt-16 pb-6 mx-auto px-1 md:px-10 lg:px-32 ">
+            <div class="flex flex-wrap lg:flex-nowrap lg:justify-between">
+                <div class="basis-full pb-10 md:basis-1/4">
                     <div class="w-20">
                         <img class=" cursor-pointer hover-fade" src="../assets/img/fahasa.png">
                     </div>
                 </div>
 
-                <div class="lg:basis-1/12 md:basis-1/4 sm:basis-1/2 sm:pb-10 space-y-3">
+                <div class="basis-1/2 pb-10 md:basis-1/4 space-y-3">
                     <p class="font-semibold pb-2 text-stone-50"> Categories </p>
                     <p class="text-stone-200 hover-fade"><a href="#"> Psychology  </a> </p>
                     <p class="text-stone-200 hover-fade"><a href="#"> Self-Help</a> </p>
@@ -32,61 +32,63 @@
                     <p class="text-stone-200 hover-fade"><a href="#"> Mystery </a></p>
                 </div>
 
-                <div class="lg:basis-2/12 lg:pl-14 md:basis-1/4 sm:basis-1/2 sm:pb-10 space-y-3  ">
+                <div class="basis-1/2 pb-10 md:basis-1/4  lg:px-10 space-y-3  ">
                     <p class="font-semibold pb-2 text-stone-50"> For kids </p>
                     <p class="text-stone-200 hover-fade"><a href="#"> Games </a></p>
                     <p class="text-stone-200 hover-fade"><a href="#"> Comics </a></p>
                     <p class="text-stone-200 hover-fade"><a href="#"> Fantasy</a> </p>
                 </div>
 
-                <div class="lg:basis-1/12 lg:pr-16 md:basis-1/4 md:pb-20 sm:basis-1/2 sm:pb-10 space-y-3">
+                <div class="basis-1/2 pb-10 md:basis-1/4 md:pb-20  lg:pr-16 space-y-3">
                     <p class="font-semibold pb-2 text-stone-50"> E-Books </p>
                     <p class="text-stone-200 hover-fade"><a href="#"> Fiction</a> </p>
                     <p class="text-stone-200 hover-fade"><a href="#"> Historical </a></p>
                     <p class="text-stone-200 hover-fade"><a href="#"> Horror </a></p>
                 </div>
+                <div class="basis-1/2 flex flex-col md:flex-row md:basis-full">
+                    <div class="md:basis-1/4 lg:basis-0"></div>
+                    <div class="pb-10 md:basis-1/4 lg:pl-0 space-y-3 ">
+                        <p class="font-semibold pb-2 text-stone-50"> Help & Contacts </p>
+                        <div class="flex items-center">
+                            <div class="pr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
+                                    <path fill="#f4f1f1" d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+                            </div>
+                            <div class="text-stone-200">
+                                <a href="tel: 445 87 999 000" class="hover-fade">+445 87 999 000</a>
+                            </div>
+                        </div>
 
-                <div class="lg:basis-4/12 lg:pl-0 md:basis-1/4 md:pl-48 sm:basis-1/2 sm:pb-10 space-y-3 ">
-                    <p class="font-semibold pb-2 text-stone-50"> Help & Contacts </p>
-                    <div class="flex items-center">
-                        <div class="pr-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
-                                <path fill="#f4f1f1" d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+                        <div class="flex items-center">
+                            <div class="pr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
+                                    <path fill="#f4f1f1" d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/>
+                                </svg>
+                            </div>
+                            <div class="text-stone-200">
+                                Mo-Fri,9 AM to 11 PM
+                            </div>
                         </div>
-                        <div class="text-stone-200">
-                            <a href="tel: 445 87 999 000" class="hover-fade">+445 87 999 000</a>
+
+                        <div class="flex items-center">
+                            <div class="pr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
+                                    <path fill="#f4f1f1" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+                                </svg>
+                            </div>
+                            <div class="text-stone-200">
+                                <a href="mailto: fahasashop@gmail.com" class="hover-fade">fahasashop@gmail.com </a>
+                            </div>
                         </div>
+
                     </div>
 
-                    <div class="flex items-center">
-                        <div class="pr-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
-                                <path fill="#f4f1f1" d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/>
-                            </svg>
+                    <div class="md:basis-1/4 lg:basis-24 xl:basis-48 2xl:basis-1/2"></div>
+                    <div class="md:basis-1/4">
+                        <p class="text-stone-200 text-justify">If you have questions, you can contact us or we will do it for you </p>
+                        <div class="hover:bg-slate-500 hover:rounded-md cursor-pointer">
+                            <p class="text-center my-5 py-2 px-2 border-2 border-indigo-100 text-stone-200 rounded-md"> Request a Call </p>
                         </div>
-                        <div class="text-stone-200">
-                            Mo-Fri,9 AM to 11 PM
-                        </div>
-                    </div>
-
-                    <div class="flex items-center">
-                        <div class="pr-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4">
-                                <path fill="#f4f1f1" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
-                            </svg>
-                        </div>
-                        <div class="text-stone-200">
-                            <a href="mailto: fahasashop@gmail.com" class="hover-fade">Email:fahasashop@gmail.com </a>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="lg:basis-3/12 md:basis-1/4 md:pl-5 sm:basis-1/2 sm:mx-auto">
-                    <p class="text-stone-200 text-justify">If you have questions, you can contact us or we will do it for you </p>
-                    <div class="hover:bg-slate-500 hover:rounded-md cursor-pointer">
-                        <p class="text-center my-5 py-2 px-2 border-2 border-indigo-100 text-stone-200 rounded-md"> Request a Call </p>
                     </div>
                 </div>
             </div>

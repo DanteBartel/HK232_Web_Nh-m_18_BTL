@@ -17,7 +17,7 @@
         <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div name="header" class="container lg:max-w-screen-xl mx-auto bg-violet-50 lg:px-16 sm:px-2 md:px-10">
+        <div name="header" class="container mx-auto bg-violet-50 lg:px-32 sm:px-2 md:px-10">
             <nav class="flex justify-between items-center py-3">
                 <div class="w-20">
                     <img class=" border-r border-gray-400 px-3 cursor-pointer hover-fade" src="../assets/img/fahasa.png">
