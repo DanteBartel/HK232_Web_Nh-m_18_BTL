@@ -14,6 +14,11 @@ switch ($action) {
         $controller = new BookController();
         $controller->show($id);
         break;
+    case 'books':
+        require_once 'controllers/BookController.php';
+        $controller = new BookController();
+        $controller->showAll();
+        break;
     default:
         echo "404 Not Found";
         break;

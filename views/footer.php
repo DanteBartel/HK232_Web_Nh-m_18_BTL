@@ -8,11 +8,11 @@
         <meta charset="utf-8">
         <meta http-equip="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" sizes="16x16">
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" sizes="16x16">
         <script src="https://kit.fontawesome.com/20d7a8279b.js" crossorigin="anonymous"></script>
         <title>Sách hay</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <footer class="mx-auto">
@@ -20,7 +20,7 @@
             <div class="flex flex-wrap lg:flex-nowrap lg:justify-between">
                 <div class="basis-full pb-10 md:basis-1/4">
                     <div class="w-20">
-                        <img class=" cursor-pointer hover-fade" src="../assets/img/fahasa.png">
+                        <img class=" cursor-pointer hover-fade" src="assets/img/fahasa.png">
                     </div>
                 </div>
 

@@ -10,17 +10,17 @@
         <meta charset="utf-8">
         <meta http-equip="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" sizes="16x16">
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" sizes="16x16">
         <script src="https://kit.fontawesome.com/20d7a8279b.js" crossorigin="anonymous"></script>
         <title>Sách hay</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div name="header" class="container mx-auto bg-violet-50 lg:px-32 sm:px-2 md:px-10">
             <nav class="flex justify-between items-center py-3">
                 <div class="w-20">
-                    <img class=" border-r border-gray-400 px-3 cursor-pointer hover-fade" src="../assets/img/fahasa.png">
+                    <img class=" border-r border-gray-400 px-3 cursor-pointer hover-fade" src="assets/img/fahasa.png">
                 </div>
 
                 <div class="px-2 font-semibold uppercase hover:text-rose-700">
@@ -48,6 +48,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-10 w-20 cursor-pointer hover-fade">
                         <path fill="#8a79be" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
                     </svg>
+
+                    <a href="index.php?action=books">To Books</a>
 
                 </div>
             </nav>
