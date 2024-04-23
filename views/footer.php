@@ -20,7 +20,9 @@
             <div class="flex flex-wrap lg:flex-nowrap lg:justify-between">
                 <div class="basis-full pb-10 md:basis-1/4">
                     <div class="w-20">
-                        <img class=" cursor-pointer hover-fade" src="assets/img/fahasa.png">
+                        <a href="index.php?action=index">
+                            <img class=" cursor-pointer hover-fade" src="assets/img/fahasa.png">
+                        </a>
                     </div>
                 </div>
 
