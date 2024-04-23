@@ -2,6 +2,7 @@
 
 ## Init
 - Đặt repo trong root của xampp
+- Import db bên trong dbScript
 - Bắt đầu từ file index.php
 
 ## Kích thước màn hình (theo Tailwind)
