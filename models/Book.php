@@ -6,7 +6,7 @@ class Book {
     public $price;
     public $image;
 
-    public function __construct($id, $name, $price,$image) {
+    public function __construct($id, $name, $price, $image) {
         $this->id = $id;
         $this->name = $name;
         $this->price = $price;
