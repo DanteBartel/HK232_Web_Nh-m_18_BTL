@@ -9,20 +9,23 @@
 <body>
     <?php require 'views/header.php'; ?>
     <hr class="border-t border-gray-300 my-4">
-    <div name="body" class="lg:max-w-screen-xl mx-auto bg-teal-100">
-        <div>body</div>
-        <h1>Books</h1>
-        <ul>
+    <div name="body" class="lg:max-w-screen-xl mx-auto ">
+        <h1 class="text-2xl font-bold mb-4 ">Books</h1>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             <?php foreach ($books as $book): ?>
-                <li>
-                    <a href="index.php?action=book&id=<?php echo $book->id; ?>">
-                        <?php echo $book->name; ?> - $<?php echo $book->price; ?>
-                    </a>
-                </li>
+                <?php require 'views/bookcard.php'; ?>
             <?php endforeach; ?>
-        </ul>
+        </div>
     </div>
     <hr class="border-t border-gray-300 my-4">
     <?php require 'views/footer.php'; ?>
 </body>
 </html>
+
+
+
+
+
+
+
+

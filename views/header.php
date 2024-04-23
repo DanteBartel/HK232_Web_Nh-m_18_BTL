@@ -20,7 +20,10 @@
         <div name="header" class="container mx-auto bg-violet-50 lg:px-32 sm:px-2 md:px-10">
             <nav class="flex justify-between items-center py-3">
                 <div class="w-20">
-                    <img class=" border-r border-gray-400 px-3 cursor-pointer hover-fade" src="assets/img/fahasa.png">
+                    <a href="index.php?action=index">
+                        <img class=" border-r border-gray-400 px-3 cursor-pointer hover-fade" src="assets/img/fahasa.png">
+                    </a>
+                    
                 </div>
 
                 <div class="px-2 font-semibold uppercase hover:text-rose-700">

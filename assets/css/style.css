@@ -5,3 +5,7 @@
 .hover-fade:hover {
     filter: brightness(80%);
 }
+
+.hidden {
+    display: none;
+}
