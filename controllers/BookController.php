@@ -18,6 +18,12 @@ class BookController {
             new Book(5, 'Điều bí mật', 500, 'assets/img/secret.webp'),
             new Book(6, 'Đơn giản', 600, 'assets/img/simple.jpg')
         ];
+        // $q_books = Book::all();
+        // $books = [];
+        // foreach ($q_books as $bookData) {
+        //     $book = new Book($bookData['id'], $bookData['name'], $bookData['price'], $bookData['image']);
+        //     $books[] = $book;
+        // }
         require 'views/books.php';
     }
 }

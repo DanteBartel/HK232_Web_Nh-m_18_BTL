@@ -1,5 +1,8 @@
 <?php
 
+// import method query
+require_once 'models/query.php';
+
 class Book {
     public $id;
     public $name;
@@ -12,6 +15,21 @@ class Book {
         $this->price = $price;
         $this->image = $image;
     }
+
+    // ------- Create
+    public function save() {
+
+    }
+
+    // ------- Read
+    public static function all() {
+        $books = query('GET', 'books.php', []);
+        return $books;
+    }
+
+    // ------- Update
+
+    // ------- Delete
 }
 
 ?>
