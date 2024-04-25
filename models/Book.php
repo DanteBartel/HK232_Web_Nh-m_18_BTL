@@ -23,7 +23,12 @@ class Book {
 
     // ------- Read
     public static function all() {
-        $books = query('GET', 'books.php', []);
+        $books = [];
+        $q_books = query('GET', 'books.php', []);
+        foreach ($q_books as $bookData) {
+            $book = new Book($bookData['id'], $bookData['name'], $bookData['price'], $bookData['image']);
+            $books[] = $book;
+        }
         return $books;
     }
 
