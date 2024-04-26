@@ -20,6 +20,7 @@ class AuthenticationController {
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user_id'] = $account->id;
                 $_SESSION['username'] = $account->username;
+                $_SESSION['user_type'] = $account->type;
                 header('Location: index.php?action=index');
                 exit;
             } else {

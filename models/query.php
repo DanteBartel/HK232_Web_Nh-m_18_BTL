@@ -3,8 +3,8 @@ function query($method, $api_file, $data = []) {
     // API endpoint
     $httpProtocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
     $host = $_SERVER['HTTP_HOST'];
-    $uri = $_SERVER['REQUEST_URI'];
-    $currentUrl = $httpProtocol . "://" . $host . $uri;
+    $script_name = $_SERVER['SCRIPT_NAME'];
+    $currentUrl = $httpProtocol . "://" . $host . $script_name;
     $url = str_replace("index.php", "api/" . $api_file, $currentUrl);
 
     // Initialize cURL session

@@ -11,7 +11,11 @@ class BookController {
 
     public function showAll() {
         $books = Book::all();
-        require 'views/books.php';
+        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0) {
+            require 'views/books_admin.php';
+        } else {
+            require 'views/books.php';
+        }
     }
 }
 

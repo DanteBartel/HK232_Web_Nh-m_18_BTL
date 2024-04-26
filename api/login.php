@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         require 'db.php';
 
         // Read a account by username
-        $sql = "SELECT id, username, password FROM accounts WHERE username = ?";
+        $sql = "SELECT id, username, password, type FROM accounts WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
 
@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo json_encode([
                     'id' => $account['id'],
                     'username' => $account['username'],
+                    'type' => $account['type'],
                 ]);
             } else {
                 http_response_code(401); // 401 Unauthorized

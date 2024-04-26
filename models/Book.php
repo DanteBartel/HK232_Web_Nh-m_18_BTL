@@ -9,16 +9,20 @@ class Book {
     public $price;
     public $image;
 
-    public function __construct($id, $name, $price, $image) {
+    public function __construct($id, $isbn, $name, $price, $author, $description, $image, $quantity) {
         $this->id = $id;
+        $this->isbn = $isbn;
         $this->name = $name;
         $this->price = $price;
+        $this->author = $author;
+        $this->description = $description;
         $this->image = $image;
+        $this->quantity = $quantity;
     }
 
     // ------- Create
     public static function create($bookData) {
-        $book = new Book($bookData['id'], $bookData['name'], $bookData['price'], $bookData['image']);
+        $book = new Book($bookData['id'], $bookData['isbn'], $bookData['name'], $bookData['price'], $bookData['author'], $bookData['description'], $bookData['image'], $bookData['quantity']);
         return $book;
     }
 
@@ -38,7 +42,7 @@ class Book {
     }
 
     public static function find_by_id($id) {
-        list($httpCode, $bookData) = query('GET', 'book.php', array('id' => $id));
+        list($httpCode, $bookData) = query('GET', 'book.php', ['id' => $id]);
         $book = Book::create($bookData);
         return $book;
     }
