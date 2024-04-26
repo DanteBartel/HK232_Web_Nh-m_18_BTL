@@ -16,7 +16,7 @@
             <?php if (isset($error)): ?>
                 <div><?php echo $error; ?></div>
             <?php endif; ?>
-            <form action="index.php?action=authentication" method="post">
+            <form action="index.php?action=login" method="POST">
                 <div>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>

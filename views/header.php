@@ -1,9 +1,3 @@
-<!-- <div name="header" class="flex lg:max-w-screen-xl mx-auto bg-rose-100">
-    <div>logo</div>
-    <div class="mx-auto">login</div>
-    <div>icon</div>
-</div> -->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -52,10 +46,23 @@
                         <path fill="#8a79be" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
                     </svg>
 
-                    <a href="index.php?action=books">To Books</a>
+                    <div class="w-24">
+                        <a href="index.php?action=books">To Books</a>
+                    </div>
+                    
+                    <div class="w-24<?php echo isset($_SESSION['loggedin']) ? " hidden" : "" ?>">
+                        <a href="index.php?action=login">To Login</a>
+                    </div>
 
-                    <a href="index.php?action=authentication">To Login</a>
+                    <div class="w-24">
+                        <?php
+                        echo "Hello " . (isset($_SESSION['username']) ? $_SESSION['username'] : "Guess");
+                        ?>
+                    </div>
 
+                    <div class="w-24<?php echo isset($_SESSION['loggedin']) ? "" : " hidden" ?>">
+                        <a href="index.php?action=logout" class="bg-rose-700 hover:bg-rose-500 p-1 border-solid border-2 border-black text-white font-bold rounded">Logout</a>
+                    </div>
                 </div>
             </nav>
         </div>

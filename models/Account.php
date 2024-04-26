@@ -20,7 +20,7 @@ class Account {
 
     // ------- Create
     public static function create($accountData) {
-        $account = new Book($accountData['id'], $accountData['username'], $accountData['password'], $accountData['type'], $accountData['email']);
+        $account = new Account($accountData['id'], $accountData['username'], $accountData['password'], $accountData['type'], $accountData['email']);
         return $account;
     }
 
@@ -41,7 +41,7 @@ class Account {
 
     // ------- Authentication
     public static function login($username, $password) {
-        list($httpCode, $accountData) = query('POST', 'login.php', array('username' => $username, 'password' => $password));
+        list($httpCode, $accountData) = query('POST', 'login.php', ['username' => $username, 'password' => $password]);
         if ($httpCode == 200) {
             $account = Account::create($accountData);
         } else {

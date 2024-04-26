@@ -21,10 +21,15 @@ switch ($action) {
         $controller = new BookController();
         $controller->showAll();
         break;
-    case 'authentication':
+    case 'login':
         require_once 'controllers/AuthenticationController.php';
         $controller = new AuthenticationController();
         $controller->login();
+        break;
+    case 'logout':
+        require_once 'controllers/AuthenticationController.php';
+        $controller = new AuthenticationController();
+        $controller->logout();
         break;
     default:
         echo "404 Not Found";

@@ -5,46 +5,58 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // Check request method
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get params
-    $username = $_POST["username"];
-    $password = $_POST["password"]
+    // Get the content of the POST request
+    $data = json_decode(file_get_contents("php://input"), true);
 
-    // DB
-    require 'db.php';
+    if ($data) {
+        // Get params
+        $username = $data['username'];
+        $password = $data['password'];
 
-    // Read a account by username
-    $sql = "SELECT id, username, password FROM accounts WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
+        // DB
+        require 'db.php';
 
-    // Execute the stmt
-    if ($stmt->execute()) {
-        $result = $stmt->get_result();
-        $account = $result->fetch_assoc();
-        if ($account && ($password == $account['password'])) {
-            http_response_code(200); // 200 OK
-            echo json_encode([
-                'id' => $account['id'], 
-                'username' => $account['username']
-            ]);
+        // Read a account by username
+        $sql = "SELECT id, username, password FROM accounts WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+
+        // Execute the stmt
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $account = $result->fetch_assoc();
+            if ($account && ($password == $account['password'])) {
+                http_response_code(200); // 200 OK
+                echo json_encode([
+                    'id' => $account['id'],
+                    'username' => $account['username'],
+                ]);
+            } else {
+                http_response_code(401); // 401 Unauthorized
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Wrong password',
+                ]);
+            }
         } else {
-            http_response_code(401); // 401 Unauthorized
+            http_response_code(404); // 404 Not Found
             echo json_encode([
                 'status' => 'error',
-                'message' => 'Wrong password'
+                'message' => 'Error reading data: ' . $conn->error
             ]);
         }
+
+        // Close the connection
+        $stmt->close();
+        $conn->close();
     } else {
-        http_response_code(404); // 404 Not Found
+        // No data received
+        http_response_code(400); // Bad Request
         echo json_encode([
             'status' => 'error',
-            'message' => 'Error reading data: ' . $conn->error
+            'message' => 'No data received'
         ]);
     }
-
-    // Close the connection
-    $stmt->close();
-    $conn->close();
 } else {
     // Handle unsupported methods
     http_response_code(405); // Method Not Allowed
