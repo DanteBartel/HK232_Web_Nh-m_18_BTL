@@ -3,21 +3,13 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-// DB
-require_once 'db.php';
-
 // Check request method
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Init variable
     $books = [];
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
+    // DB
+    require 'db.php';
 
     // Read all books
     $sql = "SELECT id, isbn, name, price, author, description, image, quantity FROM books";
@@ -38,5 +30,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     http_response_code(405); // Method Not Allowed
     echo json_encode(['message' => 'Method not allowed']);
 }
-
 ?>

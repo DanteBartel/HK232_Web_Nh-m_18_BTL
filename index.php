@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
 switch ($action) {
@@ -19,9 +21,13 @@ switch ($action) {
         $controller = new BookController();
         $controller->showAll();
         break;
+    case 'authentication':
+        require_once 'controllers/AuthenticationController.php';
+        $controller = new AuthenticationController();
+        $controller->login();
+        break;
     default:
         echo "404 Not Found";
         break;
 }
-
 ?>

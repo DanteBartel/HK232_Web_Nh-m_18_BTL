@@ -47,10 +47,13 @@ function query($method, $api_file, $data = []) {
         echo 'Error:' . curl_error($ch);
     }
 
+    // Get HTTP response code
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
     // Close cURL session
     curl_close($ch);
 
     // Decode and return the response
-    return json_decode($response, true);
+    return [$httpCode, json_decode($response, true)];
 }
 ?>

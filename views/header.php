@@ -54,6 +54,8 @@
 
                     <a href="index.php?action=books">To Books</a>
 
+                    <a href="index.php?action=authentication">To Login</a>
+
                 </div>
             </nav>
         </div>

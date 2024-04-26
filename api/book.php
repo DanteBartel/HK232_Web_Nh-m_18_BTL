@@ -3,21 +3,13 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-// DB
-require_once 'db.php';
-
 // Check request method
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Get id
     $id = $_GET["id"];
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
+    // DB
+    require 'db.php';
 
     // Read a book by id
     $sql = "SELECT id, isbn, name, price, author, description, image, quantity FROM books WHERE id = ?";
@@ -39,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Close the connection
     $stmt->close();
     $conn->close();
-
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the content of the PUT request
     $data = json_decode(file_get_contents("php://input"), true);
@@ -54,13 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $image = $data["image"];
         $quantity = $data["quantity"];
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        // DB
+        require 'db.php';
 
         // Prepare SQL statement
         $sql = "INSERT INTO books (isbn, name, price, author, description, image, quantity) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -85,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         // Close the statement and connection
         $stmt->close();
         $conn->close();
-
     } else {
         // No data received
         http_response_code(400); // Bad Request
@@ -94,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             'message' => 'No data received'
         ]);
     }
-
 } else if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     // Get the content of the PUT request
     $data = json_decode(file_get_contents("php://input"), true);
@@ -110,13 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $image = $data["image"];
         $quantity = $data["quantity"];
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        // DB
+        require 'db.php';
 
         // Prepare the SQL statement for execution
         $sql = "UPDATE books SET isbn=?, name=?, price=?, author=?, description=?, image=?, quantity=? WHERE id=?";
@@ -141,7 +120,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         // Close the statement and connection
         $stmt->close();
         $conn->close();
-
     } else {
         // No data received
         http_response_code(400); // Bad Request
@@ -150,7 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             'message' => 'No data received'
         ]);
     }
-
 } else if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     // Get the content of the PUT request
     $data = json_decode(file_get_contents("php://input"), true);
@@ -159,13 +136,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         // Get params
         $id = $data["id"];
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        // DB
+        require 'db.php';
 
         // Prepare SQL statement
         $sql = "DELETE FROM books WHERE id=?";
@@ -190,7 +162,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         // Close the statement and connection
         $stmt->close();
         $conn->close();
-
     } else {
         // No data received
         http_response_code(400); // Bad Request
@@ -199,11 +170,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             'message' => 'No id received'
         ]);
     }
-
 } else {
     // Handle unsupported methods
     http_response_code(405); // Method Not Allowed
     echo json_encode(['message' => 'Method not allowed']);
 }
-
 ?>

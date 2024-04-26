@@ -29,7 +29,7 @@ class Book {
     // ------- Read
     public static function all() {
         $books = [];
-        $bookDatas = query('GET', 'books.php', []);
+        list($httpCode, $bookDatas) = query('GET', 'books.php', []);
         foreach ($bookDatas as $bookData) {
             $book = Book::create($bookData);
             $books[] = $book;
@@ -38,7 +38,7 @@ class Book {
     }
 
     public static function find_by_id($id) {
-        $bookData = query('GET', 'book.php', array('id' => $id));
+        list($httpCode, $bookData) = query('GET', 'book.php', array('id' => $id));
         $book = Book::create($bookData);
         return $book;
     }
