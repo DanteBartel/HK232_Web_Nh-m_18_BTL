@@ -5,9 +5,13 @@ require_once 'models/query.php';
 
 class Book {
     public $id;
+    public $isbn;
     public $name;
     public $price;
+    public $author;
+    public $description;
     public $image;
+    public $quantity;
 
     public function __construct($id, $isbn, $name, $price, $author, $description, $image, $quantity) {
         $this->id = $id;
