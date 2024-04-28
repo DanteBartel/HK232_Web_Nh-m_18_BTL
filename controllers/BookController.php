@@ -71,7 +71,13 @@ class BookController {
     }
 
     public function destroy() {
-
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Using Book model to create new book in db
+            $id = $_POST['id'];
+            $_SESSION['delete_book'] = Book::delete($id) ? true : false;
+            header('Location: index.php?action=books');
+            exit;
+        }
     }
 }
 ?>

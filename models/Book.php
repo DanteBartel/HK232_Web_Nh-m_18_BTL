@@ -64,5 +64,9 @@ class Book {
     }
 
     // ------- Delete
+    public static function delete($id) {
+        list($httpCode, $bookDatas) = query('DELETE', 'books.php', ['id' => $id]);
+        if ($httpCode == 204) { return true; } else { return false; }
+    }
 }
 ?>

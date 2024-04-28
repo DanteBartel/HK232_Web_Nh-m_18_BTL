@@ -24,6 +24,21 @@
         echo "</script>";
         unset($_SESSION['new_book']);
     }
+    if (isset($_SESSION['delete_book']) && $_SESSION['delete_book'] = true) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('Delete book successfully');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['delete_book']);
+    } else if (isset($_SESSION['delete_book']) && $_SESSION['delete_book'] = false) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('Delete book failed');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['delete_book']);
+    }
     ?>
     <hr class="border-t border-gray-300 my-4">
 
@@ -66,7 +81,7 @@
                                                 <input type="hidden" name="id" value="<?php echo $book->id; ?>">
                                                 <input type="submit" value="Edit" class="bg-blue-700 hover:bg-blue-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
                                             </form>
-                                            <form action="d.php" method="post">
+                                            <form action="index.php?action=books&verb=destroy" method="post">
                                                 <input type="hidden" name="id" value="<?php echo $book->id; ?>">
                                                 <input type="submit" value="Delete" class="bg-rose-700 hover:bg-rose-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
                                             </form>
