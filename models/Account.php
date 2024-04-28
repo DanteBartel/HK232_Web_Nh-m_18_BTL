@@ -19,7 +19,7 @@ class Account {
     }
 
     // ------- Create
-    public static function create($accountData) {
+    public static function new($accountData) {
         $account = new Account($accountData['id'], $accountData['username'], $accountData['password'], $accountData['type'], $accountData['email']);
         return $account;
     }
@@ -31,7 +31,7 @@ class Account {
     // ------- Read
     public static function find_by($cname, $cvalue) {
         $accountData = query('GET', 'account.php', array('cname' => $cname, 'cvalue' => $cvalue));
-        $account = Account::create($accountData);
+        $account = Account::new($accountData);
         return $account;
     }
 
@@ -43,7 +43,7 @@ class Account {
     public static function login($username, $password) {
         list($httpCode, $accountData) = query('POST', 'login.php', ['username' => $username, 'password' => $password]);
         if ($httpCode == 200) {
-            $account = Account::create($accountData);
+            $account = Account::new($accountData);
         } else {
             $account = null;
         }
