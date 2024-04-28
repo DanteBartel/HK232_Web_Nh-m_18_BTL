@@ -5,7 +5,8 @@ require_once 'models/Book.php';
 class BookController {
 
     public function show($id) {
-        $book = new Book($id, "Book " . $id, $id * 100,'');
+        // $book = new Book($id, "Book " . $id, $id * 100,'');
+        $book= Book::find_by_id($id);
         require 'views/book.php';
     }
 
