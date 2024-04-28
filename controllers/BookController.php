@@ -22,15 +22,20 @@ class BookController {
     public function new() {
         // Return a page for input new book
         if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0) {
-            require 'views/books_admin_new.php';
+            require 'views/books_admin_edit.php';
         } else {
-            // header('Location: index.php');
-            // exit;
+            header('Location: index.php');
+            exit;
         }
     }
 
-    public function edit() {
-
+    public function edit($id) {
+        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0) {
+            require 'views/books_admin_edit.php';
+        } else {
+            header('Location: index.php');
+            exit;
+        }
     }
 
     // ------ POST
@@ -61,5 +66,4 @@ class BookController {
 
     }
 }
-
 ?>
