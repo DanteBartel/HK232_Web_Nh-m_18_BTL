@@ -12,7 +12,7 @@
     </head>
     <body>
     <div class="max-w-60 rounded overflow-hidden shadow-lg hover-fade">
-    <a href="index.php?action=book">
+    <a href="index.php?action=book&id=<?php echo $book->id; ?>">
         <img class="w-full h-72 object-fill" src="<?php echo $book->image; ?>" alt="<?php echo $book->name; ?> Image">
         <div class="px-3 py-2">
             <div class="font-bold text-xl mb-1"><?php echo $book->name; ?> </div>
