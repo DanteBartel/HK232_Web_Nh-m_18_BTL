@@ -8,6 +8,23 @@
 
 <body>
     <?php require 'views/header.php'; ?>
+    <?php
+    if (isset($_SESSION['new_book']) && $_SESSION['new_book'] = true) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('New book created successfully');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['new_book']);
+    } else if (isset($_SESSION['new_book']) && $_SESSION['new_book'] = false) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('New book failed to create');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['new_book']);
+    }
+    ?>
     <hr class="border-t border-gray-300 my-4">
 
     <div class="w-screen bg-gray-400">
@@ -16,7 +33,9 @@
                 Read Books
             </h1>
             <hr class="border-t-2 border-gray-300 my-4">
-            <form action="b.php" method="get">
+            <form action="index.php" method="GET">
+                <input type="hidden" name="action" value="books"></input>
+                <input type="hidden" name="verb" value="new"></input>
                 <input type="submit" value="Create New Book" class="bg-blue-700 hover:bg-blue-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
             </form>
             <table class="mt-4 min-w-full">
