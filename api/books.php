@@ -73,6 +73,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             'message' => 'No data received'
         ]);
     }
+} else if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+    // Get the content of the PUT request
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    if ($data) {
+        // Get params
+        $id = $data["id"];
+        $isbn = $data["isbn"];
+        $name = $data["name"];
+        $price = $data["price"];
+        $author = $data["author"];
+        $description = $data["description"];
+        $image = $data["image"];
+        $quantity = $data["quantity"];
+
+        // DB
+        require 'db.php';
+
+        // Prepare the SQL statement for execution
+        $sql = "UPDATE books SET isbn=?, name=?, price=?, author=?, description=?, image=?, quantity=? WHERE id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssdsssii", $isbn, $name, $price, $author, $description, $image, $quantity, $id);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            http_response_code(200); // OK
+            echo json_encode([
+                'status' => 'success',
+                'message' => 'Data updated successfully'
+            ]);
+        } else {
+            http_response_code(500); // Internal error
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Error updating data: ' . $conn->error
+            ]);
+        }
+        
+        // Close the statement and connection
+        $stmt->close();
+        $conn->close();
+    } else {
+        // No data received
+        http_response_code(400); // Bad Request
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'No data received'
+        ]);
+    }
 } else {
     // Handle unsupported methods
     http_response_code(405); // Method Not Allowed

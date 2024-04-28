@@ -58,6 +58,10 @@ class Book {
     }
 
     // ------- Update
+    public function update() {
+        list($httpCode, $bookDatas) = query('PUT', 'books.php', $this->data());
+        if ($httpCode == 200) { return true; } else { return false; }
+    }
 
     // ------- Delete
 }

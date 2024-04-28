@@ -31,6 +31,7 @@ class BookController {
 
     public function edit($id) {
         if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0) {
+            $book = Book::find_by_id($id);
             require 'views/books_admin_edit.php';
         } else {
             header('Location: index.php');
@@ -59,7 +60,14 @@ class BookController {
     }
 
     public function update() {
-
+        // Check if the form is submitted
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Using Book model to create new book in db
+            $book = new Book($_POST['id'], $_POST['isbn'], $_POST['name'], $_POST['price'], $_POST['author'], $_POST['description'], $_POST['image'], $_POST['quantity']);
+            $_SESSION['update_book'] = $book->update() ? true : false;
+            header('Location: index.php?action=books&verb=edit&id=' . $_POST['id']);
+            exit;
+        }
     }
 
     public function destroy() {

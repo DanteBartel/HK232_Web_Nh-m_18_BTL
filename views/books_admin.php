@@ -60,7 +60,9 @@
                                     <td class="border-2 border-gray-300"><?php echo $book->price; ?> VND</td>
                                     <td class="border-2 border-gray-300 align-top">
                                         <div class="flex">
-                                            <form action="c.php" method="get">
+                                            <form action="index.php" method="get">
+                                                <input type="hidden" name="action" value="books">
+                                                <input type="hidden" name="verb" value="edit">
                                                 <input type="hidden" name="id" value="<?php echo $book->id; ?>">
                                                 <input type="submit" value="Edit" class="bg-blue-700 hover:bg-blue-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
                                             </form>
