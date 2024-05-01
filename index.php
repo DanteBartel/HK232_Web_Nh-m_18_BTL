@@ -39,6 +39,11 @@ switch ($action) {
             }
         }
         break;
+    case 'favorite_books':
+        require_once 'controllers/BookController.php';
+        $controller = new BookController();
+        $controller->showFavoriteBooks();
+        break;
     case 'login':
         require_once 'controllers/AuthenticationController.php';
         $controller = new AuthenticationController();

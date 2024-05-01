@@ -49,13 +49,15 @@ class Account {
         if ($httpCode == 200) {
             require_once 'models/Book.php';
             $books = [];
+            $book_ids = [];
             foreach ($bookDatas as $bookData) {
                 $book = Book::new($bookData);
                 $books[] = $book;
+                $book_ids[] = $bookData['id'];
             }
-            return $books;
+            return [$books, $book_ids];
         } else {
-            return [];
+            return [[], []];
         }
     }
 
