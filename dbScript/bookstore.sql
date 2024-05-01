@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2024 at 05:16 AM
+-- Generation Time: May 01, 2024 at 11:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -77,8 +77,7 @@ INSERT INTO `books` (`id`, `isbn`, `name`, `price`, `author`, `description`, `im
 (8, '8936186540646', 'Điều bí mật', 80000, 'Yoru Sumino', 'Tác phẩm mới nhất đến từ Yoru Sumino – tác giả của cuốn tiểu thuyết ăn khách “Tớ muốn ăn tụy của cậu.”\r\nCuốn sách Điều Bí Mật được xuất bản tại Nhật tháng 3/2017, đã bán được hơn 300.000 bản. Hiện cuốn tiểu thuyết này đang được chuyển thể thành truyện tranh, tập 1 đã được xuất bản vào tháng 4/2019.\r\n\r\nChúng ta không nhớ những kỉ niệm mà nhớ chính mình trong đó. Một phiên bản tươi đẹp, nhiều mộng mơ và luôn giả vờ là mình đã lớn…\r\nĐiều bí mật như một cuốn nhật kí ghi lại những suy tư có phần ngây ngô của nhóm năm bạn học sinh cấp Ba – Kyou, Mikki, Para, Jika và Eru. Trong không khí căng thẳng của những kì thi nối tiếp nhau và tâm trạng buồn vui lẫn lộn khi sắp phải tạm biệt tuổi học trò, những cô cậu thiếu niên ấy vẫn tận hưởng trọn vẹn từng khoảnh khắc. Họ bận rộn với những hoạt động ngoại khóa và chí chóe với nhau suốt ngày, không phải vì họ ưa phá rối mà biết rằng chỉ còn mấy tháng nữa thôi là mỗi người một phương.\r\nMỗi chương sách là một mảnh kí ức của năm nhân vật xoay quanh những sự kiện bé xíu nhưng đời học sinh ai ai cũng từng trải qua – thích thầm và giận hờn vu vơ. Câu chuyện bắt đầu bằng những lời tâm sự của Kyou – chàng trai nhút nhát không dám bày tỏ với cô bạn mà mình quý mến bấy lâu. Chính điều đó đã kéo theo bao rắc rối to nhỏ trong nhóm bạn. Lật từng trang sách, độc giả nhiều khi phải bật cười vì mấy cô cậu ấy sao mà giống mình ngày xưa đến thế.\r\n\r\nDù bao nhiêu lớp người đã đi qua thì tuổi học trò vẫn mãi là quãng thời gian vô tư hồn nhiên nhất. Khi chúng ta còn trẻ dại, chúng ta luôn tự phức tạp hóa mọi chuyện trong cuộc sống thường ngày để rồi không tránh khỏi những trận cãi vã, xô xát không đáng có. Sau này nhìn lại, có lẽ sẽ nhiều sự nuối tiếc hơn là cáu kỉnh giận dỗi bởi vì không còn chúng ta của ngày xưa nữa rồi. Cô bạn Para trong cuốn tiểu thuyết này cũng thấu hiểu điều đó nên đã bày tỏ quyết tâm khép lại năm học cuối cấp bằng một vở kịch thật hoành tráng. Ban đầu, mọi người không mấy hào hứng, chỉ làm theo Para vì không có ý tưởng nào khác nhưng dần dà ai cũng bị lôi cuốn vào cuộc vui chung. Giây phút đứng trong cánh màn trước khi lên sân khấu, tất cả đều cảm thấy những nỗ lực mình đã bỏ ra hoàn toàn xứng đáng. Họ trân trọng vở kịch này vì nó chứa đựng những kỉ niệm cuối cùng, và vì thế mà đẹp nhất, trong đời học sinh của họ. Câu chuyện mở ra bằng những băn khoăn và kết lại bởi niềm tin mãnh liệt vào tương lai – tác giả không viết tiếp về kì thi đại học cam go hay chân dung của nhóm bạn khi đã ra trường hẳn là vì mong muốn lưu giữ khoảnh khắc rực rỡ nhất ấy.\r\n\r\nGấp lại Điều bí mật, mỗi độc giả sẽ mỉm cười vì “siêu năng lực” mà cả năm nhân vật nghĩ rằng chỉ mình sở hữu thật ra chẳng đáng kể so với con đường phía trước, chỉ là họ đang sống với niềm tin nhiệt thành của tuổi trẻ mà thôi. Dẫu vậy, đó lại là dư âm đậm nét nhất trong chúng ta – nỗi nhớ dịu dàng và trong sáng về tuổi mười tám đầy những âu lo tưởng chừng to tát, không lấn át được hoài bão dấn thân có phần nông nổi của những cô cậu thanh thiếu niên thuở ấy.\r\n\r\nMã hàng	8936186540646\r\nTên Nhà Cung Cấp	AZ Việt Nam\r\nTác giả	Yoru Sumino\r\nNgười Dịch	Đỗ Nguyên\r\nNXB	NXB Hà Nội\r\nNăm XB	2008\r\nNgôn Ngữ	Tiếng Việt\r\nTrọng lượng (gr)	320\r\nKích Thước Bao Bì	20.5 x 14.5 x 0.5 cm\r\nSố trang	308\r\nHình thức	Bìa Mềm\r\nSản phẩm bán chạy nhất	Top 100 sản phẩm Tiểu thuyết bán chạy của tháng\r\nGiá sản phẩm trên Fahasa.com đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như Phụ phí đóng gói, phí vận chuyển, phụ phí hàng cồng kềnh,...\r\nChính sách khuyến mãi trên Fahasa.com không áp dụng cho Hệ thống Nhà sách Fahasa trên toàn quốc\r\nĐiều Bí Mật\r\n\r\nTác phẩm mới nhất đến từ Yoru Sumino – tác giả của cuốn tiểu thuyết ăn khách “Tớ muốn ăn tụy của cậu.”\r\nCuốn sách Điều Bí Mật được xuất bản tại Nhật tháng 3/2017, đã bán được hơn 300.000 bản. Hiện cuốn tiểu thuyết này đang được chuyển thể thành truyện tranh, tập 1 đã được xuất bản vào tháng 4/2019.\r\n\r\nChúng ta không nhớ những kỉ niệm mà nhớ chính mình trong đó. Một phiên bản tươi đẹp, nhiều mộng mơ và luôn giả vờ là mình đã lớn…\r\nĐiều bí mật như một cuốn nhật kí ghi lại những suy tư có phần ngây ngô của nhóm năm bạn học sinh cấp Ba – Kyou, Mikki, Para, Jika và Eru. Trong không khí căng thẳng của những kì thi nối tiếp nhau và tâm trạng buồn vui lẫn lộn khi sắp phải tạm biệt tuổi học trò, những cô cậu thiếu niên ấy vẫn tận hưởng trọn vẹn từng khoảnh khắc. Họ bận rộn với những hoạt động ngoại khóa và chí chóe với nhau suốt ngày, không phải vì họ ưa phá rối mà biết rằng chỉ còn mấy tháng nữa thôi là mỗi người một phương.\r\nMỗi chương sách là một mảnh kí ức của năm nhân vật xoay quanh những sự kiện bé xíu nhưng đời học sinh ai ai cũng từng trải qua – thích thầm và giận hờn vu vơ. Câu chuyện bắt đầu bằng những lời tâm sự của Kyou – chàng trai nhút nhát không dám bày tỏ với cô bạn mà mình quý mến bấy lâu. Chính điều đó đã kéo theo bao rắc rối to nhỏ trong nhóm bạn. Lật từng trang sách, độc giả nhiều khi phải bật cười vì mấy cô cậu ấy sao mà giống mình ngày xưa đến thế.', 'assets/img/secret.webp', 10),
 (9, NULL, 'Đơn giản', 115200, 'Cơ Hiểu An', 'Dành tặng bạn, người đang vật lộn giữa một thế giới phức tạp, nhưng thâm tâm khao khát sự tự do giản đơn.\r\n\r\nThực ra trong thế giới phức tạp tràn đầy những logic đơn giản. Con người khác nhau ở chỗ có thể tìm thấy và nhận thức những logic này hay không.\r\n\r\nSống đơn giản không chỉ là “làm gọn” cuộc sống, mà còn phải “làm gọn” tâm hồn. Có lúc cuộc sống mệt mỏi với quá nhiều mâu thuẫn là do chúng ta nghĩ quá nhiều, làm quá ít, trái tim cố gắng, cơ thể lại không hành động. Hãy buông bỏ hết những gánh nặng suy nghĩ đó, tập trung làm việc, quy hoạch cho mình một tương lai tốt đẹp.\r\n\r\nCuốn sách này không bàn những lời vô nghĩa, chỉ viết về phương pháp, giúp bạn thật sự phát triển bản thân thông qua sáu góc độ lớn gồm nhận thức, tâm trí, thời gian, quan hệ, tâm lý, cuộc sống.', 'assets/img/simple.jpg', 10),
 (13, '', 'test02', 3000, '', 'test02', '', 4),
-(14, '', 'test03', 2000, '', 'test', '', 2),
-(15, '', 'test04', 4000, '', 'tewst03', '', 4);
+(14, '', 'test03', 2000, '', 'test', '', 2);
 
 -- --------------------------------------------------------
 
@@ -115,7 +114,10 @@ CREATE TABLE `favorite_book` (
 
 INSERT INTO `favorite_book` (`book_id`, `account_id`) VALUES
 (1, 2),
-(1, 5);
+(1, 5),
+(5, 5),
+(13, 5),
+(14, 5);
 
 -- --------------------------------------------------------
 
@@ -172,6 +174,7 @@ ALTER TABLE `book_genre`
 -- Indexes for table `favorite_book`
 --
 ALTER TABLE `favorite_book`
+  ADD PRIMARY KEY (`book_id`,`account_id`),
   ADD KEY `account_id` (`account_id`),
   ADD KEY `book_id` (`book_id`);
 

@@ -18,9 +18,12 @@ class AuthenticationController {
             if ($account) {
                 // Credentials are correct, start a new session
                 $_SESSION['loggedin'] = true;
-                $_SESSION['user_id'] = $account->id;
+                $_SESSION['account_id'] = $account->id;
                 $_SESSION['username'] = $account->username;
                 $_SESSION['user_type'] = $account->type;
+                // Create cookie
+                setcookie('account_id', $account->id);
+                // Head back to home page
                 header('Location: index.php?action=index');
                 exit;
             } else {
@@ -44,6 +47,12 @@ class AuthenticationController {
 
             // Unset all session variables
             $_SESSION = [];
+
+            // Unset cookie
+            $cookies = $_COOKIE;
+            foreach ($cookies as $name => $value) {
+                setcookie($name, '', time() - 3600, '/');
+            }
 
             // Destroy the session
             session_destroy();

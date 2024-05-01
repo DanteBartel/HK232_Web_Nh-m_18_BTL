@@ -35,6 +35,30 @@ class Account {
         return $account;
     }
 
+    public static function favorite_book_ids_of($id) {
+        list($httpCode, $datas) = query('GET', 'favorite_book.php', ['account_id' => $id, 'return_type' => 'book_ids']);
+        if ($httpCode == 200) {
+            return array_map(fn($data) => $data['book_id'], $datas);
+        } else {
+            return [];
+        }
+    }
+
+    public static function favorite_books_of($id) {
+        list($httpCode, $bookDatas) = query('GET', 'favorite_book.php', ['account_id' => $id, 'return_type' => 'books']);
+        if ($httpCode == 200) {
+            require_once 'models/Book.php';
+            $books = [];
+            foreach ($bookDatas as $bookData) {
+                $book = Book::new($bookData);
+                $books[] = $book;
+            }
+            return $books;
+        } else {
+            return [];
+        }
+    }
+
     // ------- Update
 
     // ------- Delete
