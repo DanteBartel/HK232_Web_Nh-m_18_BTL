@@ -54,6 +54,11 @@ switch ($action) {
         $controller = new AuthenticationController();
         $controller->logout();
         break;
+    case 'signup':
+        require_once 'controllers/AuthenticationController.php';
+        $controller = new AuthenticationController();
+        $controller->signup();
+        break;
     default:
         echo "404 Not Found";
         break;

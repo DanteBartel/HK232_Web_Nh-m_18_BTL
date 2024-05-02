@@ -25,7 +25,8 @@ class Account {
     }
 
     public function save() {
-
+        list($httpCode, $datas) = query('POST', 'account.php', ['username' => $this->username, 'password' => $this->password, 'type' => $this->type, 'email' => $this->email]);
+        if ($httpCode == 201) { return true; } else { return false; }
     }
 
     // ------- Read
