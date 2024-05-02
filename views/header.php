@@ -51,6 +51,10 @@
                     <div class="w-24">
                         <a href="index.php?action=books">To Books</a>
                     </div>
+
+                    <div class="w-24<?php echo (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0) ? "" : " hidden" ?>">
+                        <a href="index.php?action=accounts">To Accounts</a>
+                    </div>
                     
                     <div class="w-24<?php echo isset($_SESSION['loggedin']) ? " hidden" : "" ?>">
                         <a href="index.php?action=login">To Login</a>

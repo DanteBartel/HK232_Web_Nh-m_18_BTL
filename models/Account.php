@@ -20,18 +20,33 @@ class Account {
 
     // ------- Create
     public static function new($accountData) {
-        $account = new Account($accountData['id'], $accountData['username'], $accountData['password'], $accountData['type'], $accountData['email']);
+        $id = isset($accountData['id']) ? $accountData['id'] : '';
+        $username = isset($accountData['username']) ? $accountData['username'] : '';
+        $password = isset($accountData['password']) ? $accountData['password'] : '';
+        $type = isset($accountData['type']) ? $accountData['type'] : '';
+        $email = isset($accountData['email']) ? $accountData['email'] : '';
+        $account = new Account($id, $username, $password, $type, $email);
         return $account;
     }
 
     public function save() {
-        list($httpCode, $datas) = query('POST', 'account.php', ['username' => $this->username, 'password' => $this->password, 'type' => $this->type, 'email' => $this->email]);
+        list($httpCode, $datas) = query('POST', 'accounts.php', ['username' => $this->username, 'password' => $this->password, 'type' => $this->type, 'email' => $this->email]);
         if ($httpCode == 201) { return true; } else { return false; }
     }
 
     // ------- Read
+    public static function all() {
+        $accounts = [];
+        list($httpCode, $accountDatas) = query('GET', 'accounts.php', []);
+        foreach ($accountDatas as $accountData) {
+            $account = Account::new($accountData);
+            $accounts[] = $account;
+        }
+        return $accounts;
+    }
+
     public static function find_by($cname, $cvalue) {
-        $accountData = query('GET', 'account.php', array('cname' => $cname, 'cvalue' => $cvalue));
+        $accountData = query('GET', 'accounts.php', array('cname' => $cname, 'cvalue' => $cvalue));
         $account = Account::new($accountData);
         return $account;
     }
@@ -65,6 +80,10 @@ class Account {
     // ------- Update
 
     // ------- Delete
+    public static function delete($id) {
+        list($httpCode, $accountDatas) = query('DELETE', 'accounts.php', ['id' => $id]);
+        if ($httpCode == 204) { return true; } else { return false; }
+    }
 
     // ------- Authentication
     public static function login($username, $password) {

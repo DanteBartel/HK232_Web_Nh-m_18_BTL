@@ -44,6 +44,29 @@ switch ($action) {
         $controller = new BookController();
         $controller->showFavoriteBooks();
         break;
+    case 'accounts':
+        require_once 'controllers/AccountController.php';
+        $controller = new AccountController();
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (!isset($_GET['id']) && !isset($_GET['verb'])) {
+                $controller->showAll();
+            } else if (isset($_GET['verb']) && $_GET['verb'] == 'new') {
+                $controller->new();
+            } else if (isset($_GET['id']) && !isset($_GET['verb'])) {
+                $controller->show($_GET['id']);
+            } else if (isset($_GET['id']) && isset($_GET['verb']) && $_GET['verb'] == 'edit') {
+                $controller->edit($_GET['id']);
+            }
+        } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (!isset($_GET['verb'])) {
+                $controller->create();
+            } else if (isset($_GET['verb']) && $_GET['verb'] == 'update') {
+                $controller->update();
+            } else if (isset($_GET['verb']) && $_GET['verb'] == 'destroy') {
+                $controller->destroy();
+            }
+        }
+        break;
     case 'login':
         require_once 'controllers/AuthenticationController.php';
         $controller = new AuthenticationController();
