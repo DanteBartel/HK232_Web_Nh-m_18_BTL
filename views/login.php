@@ -68,7 +68,7 @@
                         </div>
                     </form>
                     <div class="mt-6">
-                        <p class="text-sm">Not registered? <a href="#" class="font-semibold text-violet-600 hover:underline">Create an account</a></p>
+                        <p class="text-sm">Not registered? <a href="index.php?action=signup" class="font-semibold text-violet-600 hover:underline">Create an account</a></p>
                     </div>
 
                 </div>
