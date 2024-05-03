@@ -24,6 +24,20 @@ class BookController {
         }
     }
 
+    public function showPage($page) {
+        list($books, $total_pages) = Book::page($page);
+        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0) {
+            require 'views/books_admin.php';
+        } else if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
+            require_once 'models/Account.php';
+            $fav_book_ids = Account::favorite_book_ids_of($_SESSION['account_id']);
+            require 'utils/is_fav_book.php';
+            require 'views/books.php';
+        } else {
+            require 'views/books.php';
+        }
+    }
+
     public function showFavoriteBooks() {
         if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
             require_once 'models/Account.php';

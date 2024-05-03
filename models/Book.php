@@ -51,6 +51,17 @@ class Book {
         return $books;
     }
 
+    public static function page($page) {
+        $books = [];
+        list($httpCode, $datas) = query('GET', 'books.php', ['page' => $page]);
+        [$bookDatas, $total_pages] = [$datas['bookDatas'], $datas['total_pages']];
+        foreach ($bookDatas as $bookData) {
+            $book = Book::new($bookData);
+            $books[] = $book;
+        }
+        return [$books, $total_pages];
+    }
+
     public static function find_by_id($id) {
         list($httpCode, $bookData) = query('GET', 'book.php', ['id' => $id]);
         $book = Book::new($bookData);

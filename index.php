@@ -21,7 +21,11 @@ switch ($action) {
         $controller = new BookController();
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if (!isset($_GET['id']) && !isset($_GET['verb'])) {
-                $controller->showAll();
+                if (isset($_GET['page'])) {
+                    $controller->showPage($_GET['page']);
+                } else {
+                    $controller->showAll();
+                }
             } else if (isset($_GET['verb']) && $_GET['verb'] == 'new') {
                 $controller->new();
             } else if (isset($_GET['id']) && !isset($_GET['verb'])) {

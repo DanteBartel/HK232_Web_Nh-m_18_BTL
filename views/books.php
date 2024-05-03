@@ -23,6 +23,7 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <?php require 'views/pagination.php'; ?>
     <hr class="border-t border-gray-300 my-4">
     <?php require 'views/footer.php'; ?>
     <!-- <script src="assets/js/bookcard.js"></script> -->

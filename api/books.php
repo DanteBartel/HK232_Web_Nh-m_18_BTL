@@ -5,26 +5,61 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // Check request method
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    // Init variable
-    $books = [];
+    if (isset($_GET['page'])) {
+        // Init variable
+        $page = $_GET['page'];
+        $limit = 10; // Number of items per page
+        $start = ($page - 1) * $limit; // Starting limit for MySQL query
+        $books = [];
 
-    // DB
-    require 'db.php';
+        // DB
+        require 'db.php';
 
-    // Read all books
-    $sql = "SELECT id, isbn, name, price, author, description, image, quantity FROM books";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $books[] = $row;
+        // Query to fetch data with pagination
+        $sql = "SELECT id, isbn, name, price, author, description, image, quantity FROM books LIMIT $start, $limit";
+        $results = $conn->query($sql);
+        if ($results->num_rows > 0) {
+            while ($row = $results->fetch_assoc()) {
+                $books[] = $row;
+            }
         }
+
+        // Total pages
+        $sql = "SELECT COUNT(id) AS total FROM books";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $total_pages = ceil($row["total"] / $limit); // Total pages
+
+        // Close the connection
+        $conn->close();
+
+        // Return the json
+        echo json_encode([
+            'bookDatas' => $books,
+            'total_pages' => $total_pages
+        ]);
+    } else {
+        // Init variable
+        $books = [];
+
+        // DB
+        require 'db.php';
+
+        // Read all books
+        $sql = "SELECT id, isbn, name, price, author, description, image, quantity FROM books";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $books[] = $row;
+            }
+        }
+
+        // Close the connection
+        $conn->close();
+
+        // return the json
+        echo json_encode($books);
     }
-
-    // Close the connection
-    $conn->close();
-
-    // return the json
-    echo json_encode($books);
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the content of the PUT request
     $data = json_decode(file_get_contents("php://input"), true);

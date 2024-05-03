@@ -51,7 +51,7 @@
                     </svg>
 
                     <div class="w-24">
-                        <a href="index.php?action=books">To Books</a>
+                        <a href="index.php?action=books&page=1">To Books</a>
                     </div>
 
                     <div class="w-24<?php echo isset($_SESSION['loggedin']) ? " hidden" : "" ?>">
