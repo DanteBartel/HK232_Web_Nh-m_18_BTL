@@ -97,6 +97,7 @@
         </div>
     </div>
 
+    <?php require 'views/pagination.php'; ?>
     <hr class="border-t border-gray-300 my-4">
     <?php require 'views/footer.php'; ?>
 </body>
