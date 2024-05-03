@@ -45,8 +45,8 @@ class Account {
         return $accounts;
     }
 
-    public static function find_by($cname, $cvalue) {
-        $accountData = query('GET', 'accounts.php', array('cname' => $cname, 'cvalue' => $cvalue));
+    public static function find_by_id($id) {
+        list($httpCode, $accountData) = query('GET', 'accounts.php', ['id' => $id]);
         $account = Account::new($accountData);
         return $account;
     }
@@ -78,6 +78,19 @@ class Account {
     }
 
     // ------- Update
+    public function update($old_password) {
+        if (strlen($this->username) > 0) {
+            list($httpCode, $accountDatas) = query('PUT', 'accounts.php', ['id' => $this->id, 'username' => $this->username]);
+            if ($httpCode == 200) { return true; } else { return false; }
+        } else if (strlen($this->email) > 0) {
+            list($httpCode, $accountDatas) = query('PUT', 'accounts.php', ['id' => $this->id, 'email' => $this->email]);
+            if ($httpCode == 200) { return true; } else { return false; }
+        } else if (strlen($this->password) > 0) {
+            list($httpCode, $accountDatas) = query('PUT', 'accounts.php', ['id' => $this->id, 'new_password' => $this->password, 'old_password' => $old_password]);
+            if ($httpCode == 200) { return true; } else { return false; }
+        }
+        return false;
+    }
 
     // ------- Delete
     public static function delete($id) {

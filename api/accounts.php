@@ -101,6 +101,149 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             'message' => 'No data received'
         ]);
     }
+} else if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+    // Get the content of the PUT request
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    if ($data) {
+        if (isset($data['username'])) {
+            // Get params
+            $id = $data['id'];
+            $username = $data["username"];
+
+            // DB
+            require 'db.php';
+
+            // Prepare the SQL statement for execution
+            $sql = "UPDATE accounts SET username=? WHERE id=?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("si", $username, $id);
+
+            // Execute the statement
+            if ($stmt->execute()) {
+                http_response_code(200); // OK
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Data updated successfully'
+                ]);
+            } else {
+                http_response_code(500); // Internal error
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Error updating data: ' . $conn->error
+                ]);
+            }
+            
+            // Close the statement and connection
+            $stmt->close();
+            $conn->close();
+        } else if (isset($data['email'])) {
+            // Get params
+            $id = $data['id'];
+            $email = $data["email"];
+
+            // DB
+            require 'db.php';
+
+            // Prepare the SQL statement for execution
+            $sql = "UPDATE accounts SET email=? WHERE id=?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("si", $email, $id);
+
+            // Execute the statement
+            if ($stmt->execute()) {
+                http_response_code(200); // OK
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Data updated successfully'
+                ]);
+            } else {
+                http_response_code(500); // Internal error
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Error updating data: ' . $conn->error
+                ]);
+            }
+            
+            // Close the statement and connection
+            $stmt->close();
+            $conn->close();
+        } else if (isset($data['new_password'])) {
+            // Get params
+            $id = $data['id'];
+            $new_password = $data["new_password"];
+            $old_password = $data["old_password"];
+
+            // ------------ Checking old password
+            // DB
+            require 'db.php';
+
+            // Prepare the SQL statement for checking password
+            $sql = "SELECT password FROM accounts WHERE id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $id);
+
+            // Checking password
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                $account = $result->fetch_assoc();
+                if ($old_password != $account['password']) {
+                    $stmt->close();
+                    $conn->close();
+                    http_response_code(401); // 401 Unauthorized
+                    echo json_encode([
+                        'status' => 'error',
+                        'message' => 'Wrong password',
+                    ]);
+                    exit;
+                }
+            } else {
+                $stmt->close();
+                $conn->close();
+                http_response_code(500); // Internal error
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Error checking old password: ' . $conn->error
+                ]);
+                exit;
+            }
+            
+            // ------------ Put new password
+            // DB
+            require 'db.php';
+
+            // Prepare the SQL statement for checking password
+            $sql = "UPDATE accounts SET password=? WHERE id=?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("si", $new_password, $id);
+
+            // Execute the statement
+            if ($stmt->execute()) {
+                http_response_code(200); // OK
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Data updated successfully'
+                ]);
+            } else {
+                http_response_code(500); // Internal error
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Error updating data: ' . $conn->error
+                ]);
+            }
+            
+            // Close the statement and connection
+            $stmt->close();
+            $conn->close();
+        }
+    } else {
+        // No data received
+        http_response_code(400); // Bad Request
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'No data received'
+        ]);
+    }
 } else if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     // Get the content of the PUT request
     $data = json_decode(file_get_contents("php://input"), true);

@@ -8,10 +8,39 @@ class AccountController {
         $accounts = Account::all();
         if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0) {
             require 'views/accounts_admin.php';
+        } else {
+            header('Location: index.php');
+            exit;
+        }
+    }
+
+    public function edit($id) {
+        $account = Account::find_by_id($id);
+        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
+            require 'views/account.php';
+        } else {
+            header('Location: index.php');
+            exit;
         }
     }
 
     // ------ POST
+    public function update() {
+        $username = isset($_POST['username']) ? $_POST['username'] : '';
+        $new_password = isset($_POST['new_password']) ? $_POST['new_password'] : '';
+        $old_password = isset($_POST['old_password']) ? $_POST['old_password'] : '';
+        $email = isset($_POST['email']) ? $_POST['email'] : '';
+        $account = new Account($_SESSION['account_id'], $username, $new_password, '', $email);
+        if ($account->update($old_password)) {
+            $_SESSION['update_account'] = true;
+            if (strlen($username) > 0) { $_SESSION['username'] = $account->username; }
+        } else {
+            $_SESSION['update_account'] = false;
+        }
+        header('Location: index.php?action=accounts&verb=edit&id=' . $_SESSION['account_id']);
+        exit;
+    }
+
     public function destroy() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Using Account model to delete book in db

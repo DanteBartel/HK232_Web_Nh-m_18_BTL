@@ -9,14 +9,14 @@
 <body>
     <?php require 'views/header.php'; ?>
     <?php
-    if (isset($_SESSION['delete_account']) && $_SESSION['delete_account'] = true) {
+    if (isset($_SESSION['delete_account']) && $_SESSION['delete_account'] == true) {
         echo "<script>";
         echo "window.onload = function() {";
         echo "    alert('Delete account successfully');";
         echo "};";
         echo "</script>";
         unset($_SESSION['delete_account']);
-    } else if (isset($_SESSION['delete_account']) && $_SESSION['delete_account'] = false) {
+    } else if (isset($_SESSION['delete_account']) && $_SESSION['delete_account'] == false) {
         echo "<script>";
         echo "window.onload = function() {";
         echo "    alert('Delete account failed');";

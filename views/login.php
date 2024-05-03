@@ -10,6 +10,17 @@
 <body class="bg-gray-200">
     <?php require 'views/header.php'; ?>
 
+    <?php
+    if (isset($_SESSION['new_account']) && $_SESSION['new_account'] == true) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('New account created successfully');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['new_account']);
+    }
+    ?>
+
     <hr class="border-t border-gray-300 ">
     <div class="border-2 rounded-3xl lg:max-w-screen-xl mx-auto py-8 grid grid-cols-1 md:grid-cols-2 bg-violet-500 bg-opacity-30 gap-8 lg:px-32 px-2 md:px-10">
         

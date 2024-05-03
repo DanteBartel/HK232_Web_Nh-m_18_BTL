@@ -13,14 +13,14 @@
 <body>
     <?php require 'views/header.php'; ?>
     <?php
-    if (isset($_SESSION['update_book']) && $_SESSION['update_book'] = true) {
+    if (isset($_SESSION['update_book']) && $_SESSION['update_book'] == true) {
         echo "<script>";
         echo "window.onload = function() {";
         echo "    alert('Edit book successfully');";
         echo "};";
         echo "</script>";
         unset($_SESSION['update_book']);
-    } else if (isset($_SESSION['update_book']) && $_SESSION['update_book'] = false) {
+    } else if (isset($_SESSION['update_book']) && $_SESSION['update_book'] == false) {
         echo "<script>";
         echo "window.onload = function() {";
         echo "    alert('Edit book failed');";

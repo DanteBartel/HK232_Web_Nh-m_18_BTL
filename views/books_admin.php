@@ -9,14 +9,14 @@
 <body>
     <?php require 'views/header.php'; ?>
     <?php
-    if (isset($_SESSION['new_book']) && $_SESSION['new_book'] = true) {
+    if (isset($_SESSION['new_book']) && $_SESSION['new_book'] == true) {
         echo "<script>";
         echo "window.onload = function() {";
         echo "    alert('New book created successfully');";
         echo "};";
         echo "</script>";
         unset($_SESSION['new_book']);
-    } else if (isset($_SESSION['new_book']) && $_SESSION['new_book'] = false) {
+    } else if (isset($_SESSION['new_book']) && $_SESSION['new_book'] == false) {
         echo "<script>";
         echo "window.onload = function() {";
         echo "    alert('New book failed to create');";
@@ -24,14 +24,14 @@
         echo "</script>";
         unset($_SESSION['new_book']);
     }
-    if (isset($_SESSION['delete_book']) && $_SESSION['delete_book'] = true) {
+    if (isset($_SESSION['delete_book']) && $_SESSION['delete_book'] == true) {
         echo "<script>";
         echo "window.onload = function() {";
         echo "    alert('Delete book successfully');";
         echo "};";
         echo "</script>";
         unset($_SESSION['delete_book']);
-    } else if (isset($_SESSION['delete_book']) && $_SESSION['delete_book'] = false) {
+    } else if (isset($_SESSION['delete_book']) && $_SESSION['delete_book'] == false) {
         echo "<script>";
         echo "window.onload = function() {";
         echo "    alert('Delete book failed');";
