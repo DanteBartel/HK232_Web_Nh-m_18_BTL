@@ -20,7 +20,10 @@
                 <div class=" bg-white p-12 w-[400px] h-[500px] rounded-3xl shadow-md">
                     <h2 class="text-3xl font-semibold mb-4 uppercase text-center text-violet-900">Login</h2> 
                     <h3 class="text-sm font-semibold italic mb-12">Please login to continue</h3>
-                    <form>
+                    <?php if (isset($error)): ?>
+                        <div><?php echo $error; ?></div>
+                    <?php endif; ?>
+                    <form action="index.php?action=login" method="POST">
                         <div class="mb-4">
                             <label for="email" class="block text-xl font-medium text-gray-700">Account</label>
                             <input type="text" id="username" name="username" placeholder="Email/ Phone numbers/ Login Account" class="px-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
@@ -56,9 +59,9 @@
                     <div class="mt-6">
                         <p class="text-sm">Not registered? <a href="#" class="font-semibold text-violet-600 hover:underline">Create an account</a></p>
                     </div>
+
                 </div>
             </div>
-        
     </div>
     <hr class="border-t border-gray-300">
     <?php require 'views/footer.php'; ?>
