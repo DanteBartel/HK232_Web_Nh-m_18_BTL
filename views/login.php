@@ -28,7 +28,7 @@
                 <img src="assets/img/loginalt.jpg" alt="Logo" class="w-full h-full rounded-3xl object-cover">
             </div>
             <div class="col-span-1 flex justify-center items-center px-10 order-1 md:order-2">
-                <div class=" bg-white p-12 w-[400px] h-[500px] rounded-3xl shadow-md">
+                <div class=" bg-white p-12 w-full h-full md:w-[400px] md:h-[500px] rounded-3xl shadow-md">
                     <h2 class="text-3xl font-semibold mb-4 uppercase text-center text-violet-900">Login</h2> 
                     <h3 class="text-sm font-semibold italic mb-12">Please login to continue</h3>
                     <?php if (isset($error)): ?>
