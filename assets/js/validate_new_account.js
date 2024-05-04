@@ -2,6 +2,7 @@ function validateNewAccount() {
     // Get form elements
     let username = $("#username").val();
     let password = $("#password").val();
+    let con_password = $("#con_password").val();
     let email = $("#email").val();
 
     // Validation
@@ -11,6 +12,10 @@ function validateNewAccount() {
     }
     if (password.length < 2 || password.length > 20) {
         alert("Password must have less than 2-20 characters");
+        return false;
+    }
+    if (password != con_password) {
+        alert("Confirm password must match password");
         return false;
     }
     const email_reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
