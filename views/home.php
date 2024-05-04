@@ -158,7 +158,7 @@ $ids = [];
 						]);
 						?>">
 							<!-- Book cover -->
-							<a href="#">
+							<a href="index.php?action=book&id=<?php echo $book->id ?>">
 								<img class="rounded-t-lg" src="<?php echo $book->image; ?>" alt="" />
 							</a>
 
