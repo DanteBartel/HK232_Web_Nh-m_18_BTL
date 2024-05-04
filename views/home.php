@@ -26,7 +26,7 @@ $ids = [];
 
 <body>
 	<!-- TODO: Fix the header problem -->
-	<!-- <?php require 'views/header.php'; ?> -->
+	<?php require 'views/header.php'; ?>
 	<hr class="border-t border-gray-300">
 	<div class="w-full flex justify-center">
 		<div name="body" style="width: 95%;" class=" flex-col justify-center items-center">
