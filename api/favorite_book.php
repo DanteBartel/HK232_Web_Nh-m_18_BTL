@@ -28,7 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
         }
         $stmt->close();
+        $conn->close();
     } else {
+        $stmt->close();
+        $conn->close();
         http_response_code(500); // 500 Internal Server Error
         echo json_encode([
             'status' => 'error',
@@ -39,37 +42,91 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Read objects of the selected type
     if ($return_type == 'books') {
         if (count($book_ids) > 0) {
-            // Prepare stmt
-            $sql = "SELECT id, isbn, name, price, author, description, image, quantity FROM books WHERE id IN (?" . str_repeat(",?", count($book_ids) - 1) . ")";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param(str_repeat("i", count($book_ids)), ...array_map(fn($data) => $data['book_id'], $book_ids));
-            if ($stmt->execute()) {
-                $result = $stmt->get_result();
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $datas[] =  $row;
+            if (isset($_GET['page'])) {
+                // Get books by page
+                // Init variable
+                $page = $_GET['page'];
+                $limit = 10; // Number of items per page
+                $start = ($page - 1) * $limit; // Starting limit for MySQL query
+                $books = [];
+
+                // DB
+                require 'db.php';
+
+                // Query to fetch data with pagination
+                $sql = "SELECT id, isbn, name, price, author, description, image, quantity FROM books LIMIT $start, $limit";
+
+                $sql = "SELECT id, isbn, name, price, author, description, image, quantity 
+                        FROM books 
+                        WHERE id IN (?" . str_repeat(",?", count($book_ids) - 1) . ")
+                        LIMIT $start, $limit";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param(str_repeat("i", count($book_ids)), ...array_map(fn($data) => $data['book_id'], $book_ids));
+                if ($stmt->execute()) {
+                    $result = $stmt->get_result();
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $books[] = $row;
+                        }
                     }
+                    $stmt->close();
+                    $conn->close();
+                } else {
+                    $stmt->close();
+                    $conn->close();
+                    http_response_code(500); // 500 Internal Server Error
+                    echo json_encode([
+                        'status' => 'error',
+                        'message' => 'Error reading data: ' . $conn->error
+                    ]);
                 }
-                $stmt->close();
-            } else {
-                http_response_code(500); // 500 Internal Server Error
+
+                // Total pages
+                $total_pages = ceil(count($book_ids) / $limit);
+
+                // Return the json
+                http_response_code(200); // 200 OK
                 echo json_encode([
-                    'status' => 'error',
-                    'message' => 'Error reading data: ' . $conn->error
+                    'bookDatas' => $books,
+                    'total_pages' => $total_pages
                 ]);
+            } else {
+                // Get all books
+
+                // DB
+                require 'db.php';
+
+                // Prepare stmt
+                $sql = "SELECT id, isbn, name, price, author, description, image, quantity FROM books WHERE id IN (?" . str_repeat(",?", count($book_ids) - 1) . ")";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param(str_repeat("i", count($book_ids)), ...array_map(fn($data) => $data['book_id'], $book_ids));
+                if ($stmt->execute()) {
+                    $result = $stmt->get_result();
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $datas[] = $row;
+                        }
+                    }
+                    $stmt->close();
+                    $conn->close();
+                    http_response_code(200); // 200 OK
+                    echo json_encode($datas);
+                } else {
+                    $stmt->close();
+                    $conn->close();
+                    http_response_code(500); // 500 Internal Server Error
+                    echo json_encode([
+                        'status' => 'error',
+                        'message' => 'Error reading data: ' . $conn->error
+                    ]);
+                }
             }
         }
     } else if ($return_type == 'book_ids') {
         $datas = $book_ids;
+        http_response_code(200); // 200 OK
+        echo json_encode($datas);
     }
-
-    // Close the connection
-    
-    $conn->close();
-
-    // return the json
-    http_response_code(200); // 200 OK
-    echo json_encode($datas);
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the content of the PUT request
     $data = json_decode(file_get_contents("php://input"), true);

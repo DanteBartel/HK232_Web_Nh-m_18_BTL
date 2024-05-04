@@ -50,6 +50,18 @@ class BookController {
         }
     }
 
+    public function showFavoriteBooksPage($page) {
+        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
+            require_once 'models/Account.php';
+            [$books, $fav_book_ids, $total_pages] = Account::favorite_books_of_page($_SESSION['account_id'], $page);
+            require 'utils/is_fav_book.php';
+            require 'views/books.php';
+        } else {
+            header('Location: index.php');
+            exit;
+        }
+    }
+
     public function new() {
         // Return a page for input new book
         if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0) {

@@ -77,6 +77,29 @@ class Account {
         }
     }
 
+    public static function favorite_books_of_page($id, $page) {
+        list($httpCode, $datas) = query('GET', 'favorite_book.php', ['account_id' => $id, 'return_type' => 'books', 'page' => $page]);
+        if ($httpCode == 200) {
+            // Books
+            require_once 'models/Book.php';
+            $bookDatas = $datas['bookDatas'];
+            [$books, $book_ids] = [[], []];
+            foreach ($bookDatas as $bookData) {
+                $book = Book::new($bookData);
+                $books[] = $book;
+                $book_ids[] = $bookData['id'];
+            }
+            
+            // $total_pages
+            $total_pages = $datas['total_pages'];
+
+            // Return ans
+            return [$books, $book_ids, $total_pages];
+        } else {
+            return [[], [], []];
+        }
+    }
+
     // ------- Update
     public function update($old_password) {
         if (strlen($this->username) > 0) {

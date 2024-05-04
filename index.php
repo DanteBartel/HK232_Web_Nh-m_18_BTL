@@ -46,7 +46,11 @@ switch ($action) {
     case 'favorite_books':
         require_once 'controllers/BookController.php';
         $controller = new BookController();
-        $controller->showFavoriteBooks();
+        if (isset($_GET['page'])) {
+            $controller->showFavoriteBooksPage($_GET['page']);
+        } else {
+            $controller->showFavoriteBooks();
+        }
         break;
     case 'accounts':
         require_once 'controllers/AccountController.php';
