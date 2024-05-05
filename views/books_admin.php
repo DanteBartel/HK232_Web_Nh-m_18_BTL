@@ -83,7 +83,7 @@
                                                 <input type="hidden" name="id" value="<?php echo $book->id; ?>">
                                                 <input type="submit" value="Edit" class="bg-violet-900 bg-opacity-50 hover:bg-violet-700 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
                                             </form>
-                                            <form action="index.php?action=books&verb=destroy" method="post">
+                                            <form action="index.php?action=books&verb=destroy&page=<?php echo $page; ?>" method="post">
                                                 <input type="hidden" name="id" value="<?php echo $book->id; ?>">
                                                 <input type="submit" value="Delete" class="bg-rose-700 hover:bg-rose-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
                                             </form>

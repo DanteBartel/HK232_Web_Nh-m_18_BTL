@@ -120,7 +120,7 @@ class BookController {
             // Using Book model to create new book in db
             $id = $_POST['id'];
             $_SESSION['delete_book'] = Book::delete($id) ? true : false;
-            header('Location: index.php?action=books');
+            header('Location: index.php?action=books&page=' . $_GET['page']);
             exit;
         }
     }
