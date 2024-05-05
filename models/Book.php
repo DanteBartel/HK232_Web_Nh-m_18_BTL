@@ -12,6 +12,7 @@ class Book {
     public $description;
     public $image;
     public $quantity;
+    public $ad_images;
 
     // ------- Ultility
     public function __construct($id, $isbn, $name, $price, $author, $description, $image, $quantity) {
@@ -27,6 +28,11 @@ class Book {
     
     public function data() {
         return ["id" => $this->id, "isbn" => $this->isbn, "name" => $this->name, "price" => $this->price, "author" => $this->author, "description" => $this->description, "image" => $this->image, "quantity" => $this->quantity];
+    }
+
+    public function query_ad_images() {
+        require_once 'models/AdImage.php';
+        $this->ad_images = AdImage::find_by_book_id($this->id);
     }
 
     // ------- Create

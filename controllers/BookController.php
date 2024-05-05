@@ -75,6 +75,7 @@ class BookController {
     public function edit($id) {
         if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 0) {
             $book = Book::find_by_id($id);
+            $book->query_ad_images();
             require 'views/books_admin_edit.php';
         } else {
             header('Location: index.php');

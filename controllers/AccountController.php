@@ -18,13 +18,14 @@ class AccountController {
         $account = Account::find_by_id($id);
         if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
             require 'views/account.php';
-        } else {
-            header('Location: index.php');
-            exit;
         }
     }
 
+    public function new() {}
+
     // ------ POST
+    public function create() {}
+
     public function update() {
         $username = isset($_POST['username']) ? $_POST['username'] : '';
         $new_password = isset($_POST['new_password']) ? $_POST['new_password'] : '';

@@ -28,17 +28,61 @@
         echo "</script>";
         unset($_SESSION['update_book']);
     }
+    if (isset($_SESSION['new_ad_image']) && $_SESSION['new_ad_image'] == true) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('Create additional image successfully');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['new_ad_image']);
+    } else if (isset($_SESSION['new_ad_image']) && $_SESSION['new_ad_image'] == false) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('Create additional image failed');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['new_ad_image']);
+    }
+    if (isset($_SESSION['update_ad_image']) && $_SESSION['update_ad_image'] == true) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('Update additional image successfully');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['update_ad_image']);
+    } else if (isset($_SESSION['update_ad_image']) && $_SESSION['update_ad_image'] == false) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('Update additional image failed');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['update_ad_image']);
+    }
+    if (isset($_SESSION['delete_ad_image']) && $_SESSION['delete_ad_image'] == true) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('Delete additional image successfully');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['delete_ad_image']);
+    } else if (isset($_SESSION['delete_ad_image']) && $_SESSION['delete_ad_image'] == false) {
+        echo "<script>";
+        echo "window.onload = function() {";
+        echo "    alert('Delete additional image failed');";
+        echo "};";
+        echo "</script>";
+        unset($_SESSION['delete_ad_image']);
+    }
     ?>
     <hr class="border-t border-gray-300 my-4">
 
     <div class="w-screen bg-gray-400">
         <div class="mx-auto w-[800px] p-8 bg-gray-100">
-            <h1 class="text-2xl">
+            <h1 class="text-2xl mb-4">
                 <?php
                 if (!isset($book)) { echo "Create New Book"; } else { echo "Edit Book " . $book->id; } 
                 ?>
             </h1>
-            <hr class="border-t-2 border-gray-300 my-4">
             <form action="index.php?action=books<?php if (isset($book)) {echo "&verb=update";} ?>" method="post" onsubmit="return validateBook()">
                 <!-- id -->
                 <div class="hidden">
@@ -98,6 +142,52 @@
                     <input type="submit" value="<?php if (!isset($book)) { echo "Create New Book"; } else { echo "Edit Book"; } ?>" class="bg-blue-700 hover:bg-blue-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
                 </div>
             </form>
+            <hr class="border-t-2 border-gray-300 my-4">
+            <!-- ------------ Additional Images -->
+            <?php if (isset($book)) { ?>
+            <h1 class="text-2xl mb-4">
+                Edit Additional Images
+            </h1>
+            <form action="index.php" method="GET">
+                <input type="hidden" name="action" value="ad_images"></input>
+                <input type="hidden" name="verb" value="new"></input>
+                <input type="hidden" name="book_id" value="<?php echo $book->id; ?>"></input>
+                <input type="submit" value="Create New Additional Image" class="bg-blue-700 hover:bg-blue-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
+            </form>
+            <table class="mt-4 min-w-full">
+                <thead>
+                    <tr>
+                        <th class="text-left min-w-12 border-2 border-gray-300">ID</th>
+                        <th class="text-left min-w-40 border-2 border-gray-300">Image</th>
+                        <th class="text-left min-w-20 border-2 border-gray-300">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php if ($book->ad_images) { foreach ($book->ad_images as $ad_image) { ?>
+                    <tr>
+                        <td class="border-2 border-gray-300"><?php echo $ad_image->id; ?></td>
+                        <td class="border-2 border-gray-300"><?php echo $ad_image->image; ?></td>
+                        <td class="border-2 border-gray-300 align-top">
+                            <div class="flex">
+                                <form action="index.php" method="get">
+                                    <input type="hidden" name="action" value="ad_images">
+                                    <input type="hidden" name="verb" value="edit">
+                                    <input type="hidden" name="id" value="<?php echo $ad_image->id; ?>">
+                                    <input type="hidden" name="book_id" value="<?php echo $ad_image->book_id; ?>">
+                                    <input type="submit" value="Edit" class="bg-blue-700 hover:bg-blue-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
+                                </form>
+                                <form action="index.php?action=ad_images&verb=destroy" method="post">
+                                    <input type="hidden" name="id" value="<?php echo $ad_image->id; ?>">
+                                    <input type="hidden" name="book_id" value="<?php echo $ad_image->book_id; ?>">
+                                    <input type="submit" value="Delete" class="bg-rose-700 hover:bg-rose-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <?php }} ?>
+                </tbody>
+            </table>
+            <?php } ?>
         </div>
     </div>
 
