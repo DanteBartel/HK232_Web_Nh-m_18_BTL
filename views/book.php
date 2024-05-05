@@ -22,10 +22,10 @@
                 <div class="flex flex-col md:flex-row items-start lg:items-center justify-start lg:justify-between lg:space-y-0 lg:space-x-8">
                     
                     <div class="flex flex-row mb-4 order-2 md:flex-col md:items-start md:space-y-4 md:order-1">
-                        <img src="assets/img/purplebook.jpg" alt="Thumbnail 1" class="object-fill p-2 w-1/4 md:w-40 md:h-40 lg:h-32 border-2 border-gray-400 hover:bg-gray-400 cursor-pointer" onclick="changeMainImage(this)">
-                        <img src="assets/img/biasach.jpg" alt="Thumbnail 2" class="object-fill p-2 w-1/4 md:w-40 md:h-40 lg:h-32 border-2 border-gray-400 hover:bg-gray-400 cursor-pointer" onclick="changeMainImage(this)">
-                        <img src="assets/img/fish.jpg" alt="Thumbnail 3" class="object-fill p-2 w-1/4  md:w-40 md:h-40 lg:h-32 border-2 border-gray-400 hover:bg-gray-400 cursor-pointer" onclick="changeMainImage(this)">
-                        <img src="assets/img/cavoi.jpg" alt="Thumbnail 4" class="object-fill p-2 w-1/4 md:w-40 md:h-40 lg:h-32 border-2 border-gray-400 hover:bg-gray-400 cursor-pointer" onclick="changeMainImage(this)">
+                        <img src="<?php echo $book->image; ?>" alt="Thumbnail" class="object-fill p-2 w-1/4 md:w-40 md:h-40 lg:h-32 border-2 border-gray-400 hover:bg-gray-400 cursor-pointer" onclick="changeMainImage(this)">
+                        <?php foreach ($book->ad_images as $ad_image) { ?>
+                            <img src="<?php echo $ad_image->image; ?>" alt="Thumbnail" class="object-fill p-2 w-1/4 md:w-40 md:h-40 lg:h-32 border-2 border-gray-400 hover:bg-gray-400 cursor-pointer" onclick="changeMainImage(this)">
+                        <?php } ?>
                     </div>
                     
                     <img src="<?php echo $book->image; ?>" alt="Main Image" id="mainImage" class="order-1 object-fill w-full md:w-3/4 md:ml-12 md:order-2 h-[650px] border-2 border-gray-500">

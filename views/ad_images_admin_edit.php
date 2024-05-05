@@ -26,7 +26,7 @@
                 <?php if (isset($ad_image)) { ?>
                     <input type="hidden" id="id" name="id" value="<?php echo $ad_image->id; ?>">
                 <?php } ?>
-                <input type="hidden" id="book_id" name="book_id" value="<?php echo $ad_image->book_id; ?>">
+                <input type="hidden" id="book_id" name="book_id" value="<?php echo $_GET['book_id']; ?>">
                 
                 <!-- image -->
                 <div>
