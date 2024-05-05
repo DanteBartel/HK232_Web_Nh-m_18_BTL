@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2024 at 05:23 PM
+-- Generation Time: May 05, 2024 at 06:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,29 @@ INSERT INTO `accounts` (`id`, `username`, `password`, `type`, `email`) VALUES
 (3, 'user01', 'user01', 1, 'user01@gmail.com'),
 (5, 'u02', 'u02', 1, 'u02@gmail.com'),
 (6, 'u03', 'u03', 1, 'u03@mail.com'),
-(7, 'u04', 'u04', 1, 'u04@mail.com');
+(7, 'u04', 'u04', 1, 'u04@mail.com'),
+(25, 'u07', '1234', 1, 'u07@mail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ad_images`
+--
+
+CREATE TABLE `ad_images` (
+  `id` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ad_images`
+--
+
+INSERT INTO `ad_images` (`id`, `book_id`, `image`) VALUES
+(1, 1, 'https://product.hstatic.net/200000343865/product/nhung-nguoi-khon-kho_ea89f7947ec94041b2cfacbd3d2cbcc0_master.jpg'),
+(2, 1, 'https://product.hstatic.net/200000343865/product/nhung-nguoi-khon-kho_ea89f7947ec94041b2cfacbd3d2cbcc0_master.jpg'),
+(3, 1, 'https://product.hstatic.net/200000343865/product/nhung-nguoi-khon-kho_ea89f7947ec94041b2cfacbd3d2cbcc0_master.jpg');
 
 -- --------------------------------------------------------
 
@@ -94,7 +116,6 @@ INSERT INTO `books` (`id`, `isbn`, `name`, `price`, `author`, `description`, `im
 (28, '', 'test02', 3000, '', 'test02', '', 4),
 (29, '', 'test02', 3000, '', 'test02', '', 4),
 (30, '', 'test02', 3000, '', 'test02', '', 4),
-(31, '', 'test02', 3000, '', 'test02', '', 4),
 (32, '9786042261746', 'DANH TÁC THẾ GIỚI - NHỮNG NGƯỜI KHỐN KHỔ', 28000, NULL, 'Víchto Huygô (1802-1885) là đại văn hào Pháp, ông vừa là nhà thơ, nhà văn, nhà viết kịch vĩ đại sáng tác theo khuynh hướng lãng mạn. Các tác phẩm nổi tiếng của ông phải kể đến: vở hài kịch HECNANI, tiểu thuyết THẰNG GÙ NHÀ THỜ ĐỨC BÀ, NHỮNG NGƯỜI KHỐN KHỔ. Trong tác phẩm NHỮNG ...', 'https://product.hstatic.net/200000343865/product/nhung-nguoi-khon-kho_ea89f7947ec94041b2cfacbd3d2cbcc0_master.jpg', 10),
 (33, '9786042312790', 'SỐ ĐỎ', 42000, NULL, 'Trong cái sống phải chăng của Phụng, có một cái phải chăng này đáng cảm động hơn hết. Là những thứ văn phong tứ bảo. Mực anh dùng viết là một thứ mực tím ít khi tươi màu, phần nhiều là loãng và luôn luôn là nhạt, là chết. Giấy anh dùng là thứ giấy sáu xu… Ngòi bút Phụng thích dùng nhất là thứ ngòi cái Incomparable, xu ba ngòi… Thế mà lời văn dùng bút ấy mà kí thác lên giấy ấy lại chẳng xoàng xĩnh chút nào…', 'https://product.hstatic.net/200000343865/product/so-do_bia-1_bc6f8b9559f54fd3b3b93c6962f89ab8_master.jpg', 10),
 (34, '9786042372787', 'CÀ NÓNG CHU DU TRƯỜNG SA', 68600, NULL, 'Là một chiếc máy ảnh, Cà Nóng may mắn cùng cô chủ phóng viên tham gia chuyến hải trình đặc biệt: Đi thăm Trường Sa. Những ngày trên tàu rồi đặt chân lên các điểm đảo, Cà Nóng được sống một cuộc đời mà con người và máy ảnh đều ước mơ. ', 'https://product.hstatic.net/200000343865/product/ca-nong-chu-du-truong-sa_bia_tb-2024_34351ca6382842c4bcc1117b23ea8874_master.jpg', 10),
@@ -152,7 +173,6 @@ INSERT INTO `favorite_book` (`book_id`, `account_id`) VALUES
 (1, 5),
 (5, 5),
 (8, 5),
-(13, 5),
 (43, 5),
 (45, 5);
 
@@ -196,6 +216,13 @@ ALTER TABLE `accounts`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indexes for table `ad_images`
+--
+ALTER TABLE `ad_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `book_id` (`book_id`);
+
+--
 -- Indexes for table `books`
 --
 ALTER TABLE `books`
@@ -230,7 +257,13 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `ad_images`
+--
+ALTER TABLE `ad_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `books`
@@ -247,6 +280,12 @@ ALTER TABLE `genres`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `ad_images`
+--
+ALTER TABLE `ad_images`
+  ADD CONSTRAINT `ad_images_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `book_genre`
