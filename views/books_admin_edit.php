@@ -76,105 +76,109 @@
     ?>
     <hr class="border-t border-gray-300 my-4">
 
-    <div class="w-screen bg-gray-400">
-        <div class="mx-auto w-[800px] p-8 bg-gray-100">
-            <h1 class="text-2xl mb-4">
-                <?php
-                if (!isset($book)) { echo "Create New Book"; } else { echo "Edit Book " . $book->id; } 
-                ?>
-            </h1>
+    <div class="w-screen">
+        <div class="mx-auto lg:max-w-screen-md p-2 pr-2 md:p-8 bg-violet-100 rounded-3xl">
+            <div class="shadow-md border-2 border-gray-900 w-96 mx-auto rounded-2xl bg-red-600 bg-opacity-70 py-1">
+                <h1 class="text-2xl mx-auto text-center uppercase font-extrabold text-slate-100">
+                    <?php
+                    if (!isset($book)) { echo "Create New Book"; } else { echo "Edit Book " . $book->id; } 
+                    ?>
+                </h1>
+            </div>
             <form action="index.php?action=books<?php if (isset($book)) {echo "&verb=update";} ?>" method="post" onsubmit="return validateBook()">
                 <!-- id -->
                 <div class="hidden">
                     <input type="text" id="id" name="id" value="<?php if (isset($book)) { echo $book->id; } ?>">
                 </div>
                 <!-- isbn -->
-                <div>
+                <div class="pt-2">
                     <label for="isbn" class="font-bold">ISBN (13 kí tự, nullable):</label>
                 </div>
                 <div>
-                    <input type="text" id="isbn" name="isbn" class="w-64" value="<?php if (isset($book)) { echo $book->isbn; } ?>">
+                    <input type="text" id="isbn" name="isbn" class="w-full" value="<?php if (isset($book)) { echo $book->isbn; } ?>">
                 </div>
                 <!-- name -->
-                <div>
+                <div class="pt-2">
                     <label for="name" class="font-bold">Name (Tối đa 255 kí tự):</label>
                 </div>
                 <div>
-                    <input type="text" id="name" name="name" class="w-64" required value="<?php if (isset($book)) { echo $book->name; } ?>">
+                    <input type="text" id="name" name="name" class="w-full" required value="<?php if (isset($book)) { echo $book->name; } ?>">
                 </div>
                 <!-- price -->
-                <div>
+                <div class="pt-2">
                     <label for="price" class="font-bold">Price (VND):</label>
                 </div>
                 <div>
-                    <input type="text" id="price" name="price" class="w-64" required value="<?php if (isset($book)) { echo $book->price; } ?>">
+                    <input type="text" id="price" name="price" class="w-full" required value="<?php if (isset($book)) { echo $book->price; } ?>">
                 </div>
                 <!-- author -->
-                <div>
+                <div class="pt-2">
                     <label for="author" class="font-bold">Author (Tối đa 255 kí tự, nullable):</label>
                 </div>
                 <div>
-                    <input type="text" id="author" name="author" class="w-64" value="<?php if (isset($book)) { echo $book->author; } ?>">
+                    <input type="text" id="author" name="author" class="w-full" value="<?php if (isset($book)) { echo $book->author; } ?>">
                 </div>
                 <!-- description -->
-                <div>
+                <div class="pt-2">
                     <label for="description" class="font-bold">Description (Tối đa 5000 kí tự):</label>
                 </div>
                 <div>
-                    <textarea id="description" name="description" rows="4" cols="50" required><?php if (isset($book)) { echo $book->description; } ?></textarea>
+                    <textarea id="description" name="description" rows="4" cols="96" class="w-full" required><?php if (isset($book)) { echo $book->description; } ?></textarea>
                 </div>
                 <!-- image -->
-                <div>
+                <div class="pt-2">
                     <label for="image" class="font-bold">Image (Tối đa 255 kí tự, nullable):</label>
                 </div>
                 <div>
-                    <input type="text" id="image" name="image" class="w-64" value="<?php if (isset($book)) { echo $book->image; } ?>">
+                    <input type="text" id="image" name="image" class="w-full" value="<?php if (isset($book)) { echo $book->image; } ?>">
                 </div>
                 <!-- quantity -->
-                <div>
+                <div class="pt-2">
                     <label for="quantity" class="font-bold">quantity (Kiểu số nguyên):</label>
                 </div>
                 <div>
-                    <input type="text" id="quantity" name="quantity" class="w-64" required value="<?php if (isset($book)) { echo $book->quantity; } ?>">
+                    <input type="text" id="quantity" name="quantity" class="w-full" required value="<?php if (isset($book)) { echo $book->quantity; } ?>">
                 </div>
                 <!-- submit -->
-                <div>
-                    <input type="submit" value="<?php if (!isset($book)) { echo "Create New Book"; } else { echo "Edit Book"; } ?>" class="bg-blue-700 hover:bg-blue-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
+                <div class="pt-4 text-center">
+                    <input type="submit" value="<?php if (!isset($book)) { echo "Create New Book"; } else { echo "Edit Book"; } ?>" class="bg-violet-900 bg-opacity-70 hover:bg-violet-900 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
                 </div>
             </form>
-            <hr class="border-t-2 border-gray-300 my-4">
+            <hr class="border-t-2 border-red-400 my-4">
             <!-- ------------ Additional Images -->
             <?php if (isset($book)) { ?>
-            <h1 class="text-2xl mb-4">
-                Edit Additional Images
-            </h1>
-            <form action="index.php" method="GET">
+            <div class="shadow-md border-2 border-gray-900 w-96 mx-auto rounded-2xl bg-red-600 bg-opacity-70 py-1">
+                <h1 class="text-2xl mx-auto text-center uppercase font-extrabold text-slate-100">
+                    Edit Additional Images
+                </h1>
+            </div>
+            <form action="index.php" method="GET" class="text-center pt-4">
                 <input type="hidden" name="action" value="ad_images"></input>
                 <input type="hidden" name="verb" value="new"></input>
                 <input type="hidden" name="book_id" value="<?php echo $book->id; ?>"></input>
-                <input type="submit" value="Create New Additional Image" class="bg-blue-700 hover:bg-blue-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
+                <input type="submit" value="Create New Additional Image" class="bg-violet-900 bg-opacity-70 hover:bg-violet-900 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
             </form>
             <table class="mt-4 min-w-full">
                 <thead>
                     <tr>
-                        <th class="text-left min-w-12 border-2 border-gray-300">ID</th>
-                        <th class="text-left min-w-40 border-2 border-gray-300">Image</th>
-                        <th class="text-left min-w-20 border-2 border-gray-300">Action</th>
+                        <th class="text-center min-w-12 border-2 border-gray-400">ID</th>
+                        <th class="text-center min-w-40 border-2 border-gray-400">Image</th>
+                        <th class="text-center min-w-20 border-2 border-gray-400">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php if ($book->ad_images) { foreach ($book->ad_images as $ad_image) { ?>
                     <tr>
-                        <td class="border-2 border-gray-300"><?php echo $ad_image->id; ?></td>
-                        <td class="border-2 border-gray-300"><?php echo $ad_image->image; ?></td>
-                        <td class="border-2 border-gray-300 align-top">
-                            <div class="flex">
-                                <form action="index.php" method="get">
+                        <td class="text-center border-2 border-gray-400"><?php echo $ad_image->id; ?></td>
+                        <td class="text-center border-2 border-gray-400"><?php echo $ad_image->image; ?></td>
+                        <td class="text-center border-2 border-gray-400 align-top">
+                            <div class="flex pl-6 md:pl-40">
+                                <form action="index.php" method="get" class="pr-2">
                                     <input type="hidden" name="action" value="ad_images">
                                     <input type="hidden" name="verb" value="edit">
                                     <input type="hidden" name="id" value="<?php echo $ad_image->id; ?>">
                                     <input type="hidden" name="book_id" value="<?php echo $ad_image->book_id; ?>">
-                                    <input type="submit" value="Edit" class="bg-blue-700 hover:bg-blue-500 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
+                                    <input type="submit" value="Edit" class="bg-violet-900 bg-opacity-50 hover:bg-violet-700 p-1 border-solid border-2 border-black text-white font-bold rounded"></input>
                                 </form>
                                 <form action="index.php?action=ad_images&verb=destroy" method="post">
                                     <input type="hidden" name="id" value="<?php echo $ad_image->id; ?>">
