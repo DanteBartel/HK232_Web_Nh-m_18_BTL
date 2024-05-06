@@ -87,7 +87,7 @@
                                     echo "Hello " . (isset($_SESSION['username']) ? $_SESSION['username'] : "Guess");
                                 ?>
                             </div>
-                            <div class="w-20 py-2 <?php echo isset($_SESSION['loggedin']) ? "" : " hidden" ?>">
+                            <div class="w-20 pl-4 py-2 <?php echo isset($_SESSION['loggedin']) ? "" : " hidden" ?>">
                                 <a href="index.php?action=logout" class="bg-rose-700 hover:bg-rose-500 p-1 border-solid border-2 border-black text-white font-bold rounded">Logout</a>
                             </div>
                         </div>
