@@ -63,9 +63,9 @@
                             
                             <div id="dropdownMenu" class="absolute right-0 mt-2 border-2 border-gray-500 rounded-md shadow-lg hidden bg-purple-100">
                                 <div class="py-1">
-                                    <div class="w-20 uppercase font-bold mx-auto"><a href="index.php?action=books&page=1">To Books</a></div>
-                                    <div class="w-20 px-1 uppercase font-bold mx-auto <?php echo isset($_SESSION['loggedin']) ? " hidden" : "" ?>"><a href="index.php?action=login">To Login</a></div>
-                                    <div class="w-40 px-1 pb-2 uppercase font-bold mx-auto"><?php echo "Hello " . (isset($_SESSION['username']) ? $_SESSION['username'] : "Guest"); ?></div>
+                                    <div class="w-40 uppercase font-bold text-center"><a href="index.php?action=books&page=1">To Books</a></div>
+                                    <div class="w-40  px-1 uppercase font-bold text-center <?php echo isset($_SESSION['loggedin']) ? " hidden" : "" ?>"><a href="index.php?action=login">To Login</a></div>
+                                    <div class="w-40 px-1 pb-2 uppercase font-bold text-center"><?php echo "Hello " . (isset($_SESSION['username']) ? $_SESSION['username'] : "Guest"); ?></div>
                                     <div class="w-24 pl-12 pb-2 <?php echo isset($_SESSION['loggedin']) ? "" : " hidden" ?>">
                                         <a href="index.php?action=logout" class="bg-rose-700 hover:bg-rose-500 p-1 border-solid border-2 border-black text-white font-bold rounded">Logout</a>
                                     </div>
@@ -74,20 +74,20 @@
                         </div>
 
                         <div id="flexMenu" class="flex justify-end">
-                            <div class="w-20">
+                            <div class="w-20 h-10 py-1 border-2 border-violet-200 hover:bg-violet-900 rounded-md bg-violet-900 bg-opacity-70 text-white font-bold text-center">
                                 <a href="index.php?action=books&page=1">To Books</a>
                             </div>
 
-                            <div class="w-20 <?php echo isset($_SESSION['loggedin']) ? " hidden" : "" ?>">
+                            <div class="w-20 h-10 py-1 border-2 border-violet-200 hover:bg-violet-900 rounded-md bg-violet-900 bg-opacity-70 text-white font-bold text-center <?php echo isset($_SESSION['loggedin']) ? " hidden" : "" ?>">
                                 <a href="index.php?action=login">To Login</a>
                             </div>
 
-                            <div class="w-22 pr-2">
+                            <div class="w-20 pl-4 font-bold italic">
                                 <?php
                                     echo "Hello " . (isset($_SESSION['username']) ? $_SESSION['username'] : "Guess");
                                 ?>
                             </div>
-                            <div class="w-24 <?php echo isset($_SESSION['loggedin']) ? "" : " hidden" ?>">
+                            <div class="w-20 py-2 <?php echo isset($_SESSION['loggedin']) ? "" : " hidden" ?>">
                                 <a href="index.php?action=logout" class="bg-rose-700 hover:bg-rose-500 p-1 border-solid border-2 border-black text-white font-bold rounded">Logout</a>
                             </div>
                         </div>
