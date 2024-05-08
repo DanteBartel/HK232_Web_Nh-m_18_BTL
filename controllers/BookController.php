@@ -7,10 +7,26 @@ class BookController
 	// ------ GET
 	public function show($id)
 	{
-		// $book = new Book($id, "Book " . $id, $id * 100,'');
 		$book = Book::find_by_id($id);
 		$book->query_ad_images();
-		require 'views/book.php';
+
+		if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
+			require_once 'models/Account.php';
+			require_once 'utils/is_fav_book.php';
+
+			list($httpCode, $datas) = query('GET', 'favorite_book.php', ['account_id' => $_SESSION['account_id'], 'return_type' => 'book_ids']);
+
+			$fav_book_ids = [];
+			if ($httpCode === 200) {
+				$fav_book_ids = array_map(fn($data) => $data['book_id'], $datas);
+
+				extract(['fav_book_ids' => $fav_book_ids, 'book' => $book]);
+				require 'views/book.php';
+			}
+		} else {
+			require 'views/book.php';
+		}
+
 	}
 
 	public function showAll()

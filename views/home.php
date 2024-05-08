@@ -282,7 +282,7 @@ require_once 'utils/parse_CSS_util.php';
 							<!-- Book info -->
 							<div class="flex-grow flex flex-col justify-between p-5">
 								<div>
-									<a href="#">
+									<a href="index.php?action=book&id=<?php echo $book->id ?>">
 										<h5 class="mb-2 font-bold tracking-tight text-gray-900 text-xl">
 											<?php echo $book->name; ?>
 										</h5>

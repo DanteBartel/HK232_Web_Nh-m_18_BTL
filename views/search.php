@@ -87,7 +87,7 @@
 							</div>
 
 							<div class="flex items-center justify-center">
-								<a href="#"
+								<a href="index.php?action=book&id=<?php echo $book->id ?>"
 									class="inline-flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-4 h-auto mr-2">
 										<path fill="white"
