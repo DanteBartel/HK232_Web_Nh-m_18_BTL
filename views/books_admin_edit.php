@@ -172,7 +172,7 @@
                         <td class="text-center border-2 border-gray-400"><?php echo $ad_image->id; ?></td>
                         <td class="text-center border-2 border-gray-400"><?php echo $ad_image->image; ?></td>
                         <td class="text-center border-2 border-gray-400 align-top">
-                            <div class="flex pl-6 md:pl-40">
+                            <div class="flex pl-6 md:pl-20">
                                 <form action="index.php" method="get" class="pr-2">
                                     <input type="hidden" name="action" value="ad_images">
                                     <input type="hidden" name="verb" value="edit">
