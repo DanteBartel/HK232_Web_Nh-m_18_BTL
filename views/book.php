@@ -85,12 +85,12 @@
 					<div class="hidden"><?php echo $book->id ?></div>
 
 					<button
-						class="w-full bg-violet-900 bg-opacity-70 hover:bg-violet-900 hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-8">
+						class="w-full bg-violet-900 bg-opacity-70 hover:bg-violet-900 hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-0">
 						Add to cart
 					</button>
 
 					<button
-						class="ml-auto mr-0 focus:outline-none border-heart <?php echo isset($fav_book_ids) && !is_fav_book($book->id, $fav_book_ids) ? "" : "hidden"; ?>">
+						class="ml-8 mr-0 focus:outline-none border-heart <?php echo isset($fav_book_ids) && !is_fav_book($book->id, $fav_book_ids) ? "" : "hidden"; ?>">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
 							class="h-6 w-6 fill-current text-gray-500 hover:text-red-500">
 							<path fill="#81779c"
@@ -98,7 +98,7 @@
 						</svg>
 					</button>
 					<button
-						class="ml-auto mr-0 focus:outline-none full-heart <?php echo isset($fav_book_ids) && is_fav_book($book->id, $fav_book_ids) ? "" : "hidden"; ?>">
+						class="ml-8 mr-0 focus:outline-none full-heart <?php echo isset($fav_book_ids) && is_fav_book($book->id, $fav_book_ids) ? "" : "hidden"; ?>">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
 							class="h-6 w-6 fill-current text-gray-500 hover:text-red-500">
 							<path fill="#81779c"
