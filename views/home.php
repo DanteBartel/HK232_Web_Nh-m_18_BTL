@@ -1,7 +1,7 @@
 <?php
 
 $array = range(0, count($books) - 1);
-$random_keys = array_rand($array, 3);
+$random_keys = array_rand($array, 5);
 
 $featured_idx = $random_keys[0];
 require_once 'utils/parse_CSS_util.php';
