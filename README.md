@@ -20,3 +20,5 @@
 ## Bộ icon sử dụng
 
 https://fontawesome.com/search?o=r&m=free&s=solid&f=classic
+
+## Sao anh lại dùng trick lỏd jQuery thế????

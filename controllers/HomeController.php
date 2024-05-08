@@ -6,7 +6,11 @@ class HomeController
 {
 	public function index()
 	{
-		$books = Book::all();
+		[$books, $total_pages] = Book::page(1);
+		if ($total_pages > 1) {
+			[$book2, $total_pages2] = Book::page(2);
+			$books = array_merge($books, $book2);
+		}
 		$this->render('home', ['books' => $books]);
 	}
 
