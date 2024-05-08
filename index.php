@@ -108,6 +108,13 @@ switch ($action) {
 		$controller = new AuthenticationController();
 		$controller->signup();
 		break;
+	case 'search':
+		require_once 'controllers/SearchController.php';
+		$controller = new SearchController();
+		if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+			$controller->searchFor($_GET['key']);
+		}
+		break;
 	default:
 		echo "404 Not Found";
 		break;

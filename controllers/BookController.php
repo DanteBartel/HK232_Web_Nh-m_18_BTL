@@ -41,6 +41,7 @@ class BookController
 		} else {
 			require 'views/books.php';
 		}
+
 	}
 
 	public function showFavoriteBooks()

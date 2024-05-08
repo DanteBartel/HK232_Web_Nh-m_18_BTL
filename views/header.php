@@ -34,7 +34,7 @@
 				</div>
 
 				<!-- TODO: Search bar -->
-				<div class=" basis-2/12 lg:basis-4/12 xl:pl-20">
+				<!-- <div class=" basis-2/12 lg:basis-4/12 xl:pl-20">
 					<div class="relative w-20 md:w-64 lg:w-72 xl:w-96">
 						<input type="text"
 							class="block w-3 md:w-full py-2 pl-4 pr-4 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:outline-none"
@@ -47,7 +47,25 @@
 							</svg>
 						</div>
 					</div>
+				</div> -->
+				<div class="basis-2/12 lg:basis-4/12 xl:pl-20">
+					<div class="relative w-20 md:w-64 lg:w-72 xl:w-96">
+						<form action="index.php" method="get">
+							<input type="hidden" name="action" value="search">
+							<input type="text" name="key"
+								class="block w-3 md:w-full py-2 pl-4 pr-4 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:outline-none"
+								placeholder="Search">
+						</form>
+						<div class="absolute inset-y-0 right-0 flex items-center pr-12 md:pr-4 pointer-events-none">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 text-gray-400">
+								<path fill="currentColor"
+									d="M16.293 15.707l3.999 3.999a1 1 0 0 1-1.414 1.414l-3.999-3.999a8 8 0 1 1 1.414-1.414zM10 16a6 6 0 1 0 0-12a6 6 0 0 0 0 12z" />
+							</svg>
+						</div>
+					</div>
 				</div>
+
+
 
 				<div class="basis-7/12 lg:basis-6/12 flex flex-wrap justify-end">
 					<!-- Favorite -->

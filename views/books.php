@@ -18,14 +18,23 @@
 	<hr class="border-t border-gray-300 my-4">
 	<div name="body" class="lg:max-w-screen-xl mx-auto ">
 		<h1 class="text-2xl font-bold mb-4 ">Books</h1>
-		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-0 gap-y-4">
-			<?php foreach ($books as $book): ?>
-				<?php
-				require 'views/bookcard.php'; ?>
-			<?php endforeach; ?>
-		</div>
+		<?php
+		if (count($books) === 0) {
+			echo "You don't have any favorite book!";
+		} else {
+			?>
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-0 gap-y-4">
+				<?php foreach ($books as $book): ?>
+					<?php
+					require 'views/bookcard.php'; ?>
+				<?php endforeach; ?>
+			</div>
+			<?php require 'views/pagination.php'; ?>
+			<?php
+		}
+		?>
+
 	</div>
-	<?php require 'views/pagination.php'; ?>
 	<hr class="border-t border-gray-300 my-4">
 	<?php require 'views/footer.php'; ?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -184,7 +184,16 @@ require_once 'utils/parse_CSS_util.php';
 						'xl' => ['text-xl', 'w-3/4', 'my-6'],
 					]);
 					?>">
-						<?php echo $books[$featured_idx]->description ?>
+						<?php
+						$text = '';
+						if (mb_strlen($books[$featured_idx]->description, 'UTF-8') > 500) {
+							$text = mb_substr($books[$featured_idx]->description, 0, 500, 'UTF-8') . "...";
+						} else {
+							$text = $books[$featured_idx]->description;
+						}
+
+						echo $text;
+						?>
 					</div>
 
 					<a class="featured-link" href="index.php?action=book&id= <?php echo $books[$featured_idx]->id ?>">
@@ -242,7 +251,7 @@ require_once 'utils/parse_CSS_util.php';
 
 				<!-- Carousel of cards -->
 				<!-- <div class="flex overflow-x-scroll"> -->
-				<div class="grid grid-cols-5 gap-4">
+				<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mx-auto">
 
 					<!-- The like button functionality -->
 					<?php
@@ -261,16 +270,8 @@ require_once 'utils/parse_CSS_util.php';
 
 					<!-- Parsing book cards -->
 
-					<!-- removed code ?php
-					parseResponsiveCSS([
-						'' => ['w-3/5'],
-						'md' => ['w-1/4'],
-						'xl' => ['w-1/5']
-					]);
-					> -->
-
 					<?php foreach ($books as $book): ?>
-						<div class="w-full bg-white flex flex-col border border-gray-200 rounded-lg shadow mx-4 flex-none">
+						<div class="w-4/5 md:w-full bg-white flex flex-col border border-gray-200 rounded-lg shadow mx-4 flex-none">
 							<!-- Book cover -->
 							<div class="flex items-center justify-center w-auto h-3/5 rounded-lg overflow-hidden">
 								<a href="index.php?action=book&id=<?php echo $book->id ?>">
