@@ -30,6 +30,7 @@ require_once 'utils/parse_CSS_util.php';
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" sizes="16x16">
 	<script src="https://kit.fontawesome.com/20d7a8279b.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
 	<style>
 		.fade-in {
@@ -271,7 +272,8 @@ require_once 'utils/parse_CSS_util.php';
 					<!-- Parsing book cards -->
 
 					<?php foreach ($books as $book): ?>
-						<div class="w-4/5 md:w-full bg-white flex flex-col border border-gray-200 rounded-lg shadow mx-4 flex-none">
+						<div
+							class="w-4/5 md:w-full bg-white flex flex-col border border-gray-200 rounded-lg shadow mx-4 flex-none hover-fade">
 							<!-- Book cover -->
 							<div class="flex items-center justify-center w-auto h-3/5 rounded-lg overflow-hidden">
 								<a href="index.php?action=book&id=<?php echo $book->id ?>">
@@ -319,14 +321,14 @@ require_once 'utils/parse_CSS_util.php';
 									</div>
 
 									<div class="flex items-center justify-center">
-										<a href="#"
-											class="inline-flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+										<button data-id="<?php echo $book->id; ?>"
+											class="inline-flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800 book-button">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-4 h-auto mr-2">
 												<path fill="white"
 													d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96zM252 160c0 11 9 20 20 20h44v44c0 11 9 20 20 20s20-9 20-20V180h44c11 0 20-9 20-20s-9-20-20-20H356V96c0-11-9-20-20-20s-20 9-20 20v44H272c-11 0-20 9-20 20z" />
 											</svg>
 											Add to cart
-										</a>
+										</button>
 									</div>
 								</div>
 							</div>
@@ -488,10 +490,25 @@ require_once 'utils/parse_CSS_util.php';
 			, 50);
 	</script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 	<script src="assets/js/api_url.js"></script>
 	<script src="assets/js/book_card.js"></script>
+	<script>
+
+		$(document).ready(function () {
+			$(".book-button").click(function () {
+				var productId = $(this).data('id'); // get book id from data-id attribute
+				$.post("index.php?action=cart",
+					{
+						id: productId
+					},
+					function (data, status) {
+						alert("Data: " + data + "\nStatus: " + status);
+					});
+			});
+		});
+
+	</script>
 </body>
 
 </html>

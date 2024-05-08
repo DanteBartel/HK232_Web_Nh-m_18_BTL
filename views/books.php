@@ -41,6 +41,21 @@
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 	<script src="assets/js/api_url.js"></script>
 	<script src="assets/js/book_card.js"></script>
+	<script>
+		$(document).ready(function () {
+			$(".book-button").click(function () {
+				var productId = $(this).data('id'); // get book id from data-id attribute
+				$.post("index.php?action=cart",
+					{
+						id: productId
+					},
+					function (data, status) {
+						alert("Data: " + data + "\nStatus: " + status);
+					});
+			});
+		});
+
+	</script>
 </body>
 
 </html>

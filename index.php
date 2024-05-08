@@ -115,6 +115,41 @@ switch ($action) {
 			$controller->searchFor($_GET['key']);
 		}
 		break;
+	case 'cart':
+		// Get user to set cookies
+		$current_user = isset($_SESSION['username']) ? $_SESSION['username'] : "Guest";
+
+		// POST is to add item
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+
+			$id = $_POST['id'];
+			if ($current_user === "Guest" || $_SESSION['user_type'] === 1) {
+				// Check if the cookie is set
+				if (isset($_COOKIE[$current_user])) {
+					// Get the array from the cookie
+					$myArray = unserialize($_COOKIE[$current_user]);
+				} else {
+					// Initialize an empty array if the cookie is not set
+					$myArray = array();
+				}
+
+				if (!in_array($id, $myArray)) {
+					$myArray[] = $id;
+				}
+
+				// Place the array back into the cookie
+				setcookie($current_user, serialize($myArray), time() + 100, "/");
+			}
+			// GET is to view the cart
+		} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+			if ($current_user === "Guest" || $_SESSION['user_type'] === 1) {
+				require_once 'views/cart.php';
+			} else {
+				header('Location: index.php');
+			}
+		}
+		break;
 	default:
 		echo "404 Not Found";
 		break;

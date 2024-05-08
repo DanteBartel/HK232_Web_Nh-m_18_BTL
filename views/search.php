@@ -104,7 +104,7 @@
 						</div>
 					</div>
 				<?php endforeach; ?>
-			<?php
+				<?php
 			}
 			?>
 		</div>

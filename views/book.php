@@ -7,7 +7,7 @@
 	<title>Book Detail</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="bg-gray-200">
@@ -84,10 +84,23 @@
 					<!-- DO NOT DELETE: trick lỏd jQuery -->
 					<div class="hidden"><?php echo $book->id ?></div>
 
-					<button
+					<button id="addToCartButton"
 						class="w-full bg-violet-900 bg-opacity-70 hover:bg-violet-900 hover:bg-opacity-90 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-0">
 						Add to cart
 					</button>
+					<script>
+						$(document).ready(function () {
+							$("#addToCartButton").click(function () {
+								$.post("index.php?action=cart",
+									{
+										id: <?php echo $book->id; ?>
+									},
+									function (data, status) {
+										alert("Data: " + data + "\nStatus: " + status);
+									});
+							});
+						});
+					</script>
 
 					<button
 						class="ml-8 mr-0 focus:outline-none border-heart <?php echo isset($fav_book_ids) && !is_fav_book($book->id, $fav_book_ids) ? "" : "hidden"; ?>">
@@ -141,7 +154,6 @@
 	<hr class="border-t border-gray-300 my-4">
 	<?php require 'views/footer.php'; ?>
 	<script src="assets/js/fakebook.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 	<script src="assets/js/api_url.js"></script>
 	<script src="assets/js/book_card.js"></script>

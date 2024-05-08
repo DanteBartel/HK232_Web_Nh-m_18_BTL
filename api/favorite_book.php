@@ -101,7 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				// Select * from books where id in ({some book ids})
 				$sql = "SELECT id, isbn, name, price, author, description, image, quantity FROM books WHERE id IN (?" . str_repeat(",?", count($book_ids) - 1) . ")";
 
-
 				$stmt = $conn->prepare($sql);
 				$stmt->bind_param(str_repeat("i", count($book_ids)), ...array_map(fn($data) => $data['book_id'], $book_ids));
 				if ($stmt->execute()) {
